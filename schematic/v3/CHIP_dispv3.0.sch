@@ -11307,8 +11307,9 @@ Connection</text>
 <label x="556.26" y="182.88" size="1.778" layer="95"/>
 <wire x1="546.1" y1="177.8" x2="546.1" y2="172.72" width="0.1524" layer="91"/>
 <wire x1="546.1" y1="172.72" x2="546.1" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="546.1" y1="170.18" x2="546.1" y2="165.1" width="0.1524" layer="91"/>
+<wire x1="546.1" y1="170.18" x2="546.1" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="X1" gate="-6" pin="1"/>
+<wire x1="546.1" y1="167.64" x2="546.1" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="571.5" y1="170.18" x2="546.1" y2="170.18" width="0.1524" layer="91"/>
 <junction x="546.1" y="170.18"/>
 <pinref part="X1" gate="-5" pin="1"/>
@@ -11319,6 +11320,10 @@ Connection</text>
 <junction x="546.1" y="177.8"/>
 <pinref part="X1" gate="-1" pin="1"/>
 <wire x1="571.5" y1="182.88" x2="546.1" y2="182.88" width="0.1524" layer="91"/>
+<pinref part="X1" gate="-7" pin="1"/>
+<wire x1="571.5" y1="167.64" x2="546.1" y2="167.64" width="0.1524" layer="91"/>
+<junction x="546.1" y="167.64"/>
+<label x="556.26" y="167.64" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$18" gate="M" pin="GND"/>
@@ -11429,7 +11434,8 @@ Connection</text>
 <wire x1="571.5" y1="132.08" x2="543.56" y2="132.08" width="0.1524" layer="91"/>
 <wire x1="543.56" y1="132.08" x2="543.56" y2="129.54" width="0.1524" layer="91"/>
 <pinref part="X1" gate="-22" pin="1"/>
-<wire x1="543.56" y1="129.54" x2="543.56" y2="121.92" width="0.1524" layer="91"/>
+<wire x1="543.56" y1="129.54" x2="543.56" y2="127" width="0.1524" layer="91"/>
+<wire x1="543.56" y1="127" x2="543.56" y2="121.92" width="0.1524" layer="91"/>
 <wire x1="543.56" y1="121.92" x2="543.56" y2="111.76" width="0.1524" layer="91"/>
 <wire x1="571.5" y1="129.54" x2="543.56" y2="129.54" width="0.1524" layer="91"/>
 <junction x="543.56" y="129.54"/>
@@ -11440,6 +11446,9 @@ Connection</text>
 <label x="556.26" y="111.76" size="1.778" layer="95"/>
 <wire x1="538.48" y1="121.92" x2="543.56" y2="121.92" width="0.1524" layer="91"/>
 <junction x="543.56" y="121.92"/>
+<pinref part="X1" gate="-23" pin="1"/>
+<wire x1="571.5" y1="127" x2="543.56" y2="127" width="0.1524" layer="91"/>
+<junction x="543.56" y="127"/>
 </segment>
 <segment>
 <pinref part="C8" gate="G$1" pin="2"/>
