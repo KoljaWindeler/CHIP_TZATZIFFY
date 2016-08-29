@@ -10974,8 +10974,8 @@ drill 1.1 mm</description>
 <part name="U$25" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="U1" library="PocketCHIP-Components-v0.7" deviceset="LMR62421" device=""/>
 <part name="R1" library="rcl" deviceset="R-EU_" device="M0805" value="100K"/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="M0805" value="140K"/>
-<part name="R3" library="rcl" deviceset="R-EU_" device="M0805" value="11.5K"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="M0805" value="31.6k"/>
+<part name="R3" library="rcl" deviceset="R-EU_" device="M0805" value="2.21k"/>
 <part name="U$8" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="U$12" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="C1" library="rcl" deviceset="C-EU" device="C0805" value="220pF"/>
@@ -11071,6 +11071,8 @@ Connection</text>
 <wire x1="233.68" y1="35.56" x2="274.32" y2="35.56" width="0.4064" layer="94" style="shortdash"/>
 <text x="236.22" y="81.28" size="1.778" layer="94" font="vector" ratio="12">1W EEPROM</text>
 <text x="530.86" y="246.38" size="1.778" layer="91">1.255V</text>
+<text x="543.56" y="264.16" size="1.778" layer="91">19.2V</text>
+<text x="530.86" y="233.68" size="1.778" layer="91">0.567 mA</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="226.06" y="27.94"/>
