@@ -26144,6 +26144,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="RG" library="solpad" deviceset="LSP10" device=""/>
 <part name="RO" library="solpad" deviceset="LSP10" device=""/>
 <part name="D2" library="Keyboard v0_5" deviceset="DIODE_SCHTKY_B240" device="" value="B240A"/>
+<part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="n.a."/>
 </parts>
 <sheets>
 <sheet>
@@ -26314,7 +26315,7 @@ Connection</text>
 <instance part="GND7" gate="1" x="355.6" y="254"/>
 <instance part="GND8" gate="1" x="330.2" y="238.76"/>
 <instance part="C6" gate="G$1" x="281.94" y="241.3"/>
-<instance part="GND9" gate="1" x="281.94" y="223.52"/>
+<instance part="GND9" gate="1" x="281.94" y="220.98"/>
 <instance part="C11" gate="G$1" x="266.7" y="254"/>
 <instance part="C12" gate="G$1" x="347.98" y="254"/>
 <instance part="C13" gate="G$1" x="355.6" y="246.38" rot="R270"/>
@@ -26339,6 +26340,7 @@ Connection</text>
 <instance part="RG" gate="1" x="355.6" y="269.24"/>
 <instance part="RO" gate="1" x="360.68" y="259.08"/>
 <instance part="D2" gate="G$1" x="535.94" y="271.78"/>
+<instance part="R6" gate="G$1" x="325.12" y="226.06" rot="MR180"/>
 </instances>
 <busses>
 </busses>
@@ -26363,9 +26365,13 @@ Connection</text>
 <pinref part="J1" gate="G$1" pin="XIO-P4"/>
 <wire x1="431.8" y1="149.86" x2="431.8" y2="203.2" width="0.1524" layer="91"/>
 <wire x1="431.8" y1="203.2" x2="332.74" y2="203.2" width="0.1524" layer="91"/>
-<wire x1="332.74" y1="203.2" x2="332.74" y2="251.46" width="0.1524" layer="91"/>
+<wire x1="332.74" y1="203.2" x2="332.74" y2="226.06" width="0.1524" layer="91"/>
 <pinref part="PAM1" gate="G$1" pin="SHND"/>
+<wire x1="332.74" y1="226.06" x2="332.74" y2="251.46" width="0.1524" layer="91"/>
 <wire x1="332.74" y1="251.46" x2="325.12" y2="251.46" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="2"/>
+<wire x1="330.2" y1="226.06" x2="332.74" y2="226.06" width="0.1524" layer="91"/>
+<junction x="332.74" y="226.06"/>
 </segment>
 </net>
 <net name="GP4" class="0">
@@ -26678,12 +26684,14 @@ Connection</text>
 <segment>
 <pinref part="C6" gate="G$1" pin="2"/>
 <pinref part="GND9" gate="1" pin="GND"/>
-<wire x1="281.94" y1="236.22" x2="281.94" y2="228.6" width="0.1524" layer="91"/>
+<wire x1="281.94" y1="236.22" x2="281.94" y2="226.06" width="0.1524" layer="91"/>
 <pinref part="C15" gate="G$1" pin="2"/>
-<wire x1="281.94" y1="228.6" x2="281.94" y2="226.06" width="0.1524" layer="91"/>
-<wire x1="256.54" y1="233.68" x2="256.54" y2="228.6" width="0.1524" layer="91"/>
-<wire x1="256.54" y1="228.6" x2="281.94" y2="228.6" width="0.1524" layer="91"/>
-<junction x="281.94" y="228.6"/>
+<wire x1="281.94" y1="226.06" x2="281.94" y2="223.52" width="0.1524" layer="91"/>
+<wire x1="256.54" y1="233.68" x2="256.54" y2="226.06" width="0.1524" layer="91"/>
+<wire x1="256.54" y1="226.06" x2="281.94" y2="226.06" width="0.1524" layer="91"/>
+<junction x="281.94" y="226.06"/>
+<wire x1="281.94" y1="226.06" x2="320.04" y2="226.06" width="0.1524" layer="91"/>
+<pinref part="R6" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="SDIO" gate="G$1" pin="VSS"/>
