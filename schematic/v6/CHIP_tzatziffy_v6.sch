@@ -26144,7 +26144,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="RG" library="solpad" deviceset="LSP10" device=""/>
 <part name="RO" library="solpad" deviceset="LSP10" device=""/>
 <part name="D2" library="Keyboard v0_5" deviceset="DIODE_SCHTKY_B240" device="" value="B240A"/>
-<part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="n.a."/>
+<part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="12k"/>
 </parts>
 <sheets>
 <sheet>
@@ -26186,7 +26186,6 @@ Connection</text>
 <text x="363.22" y="246.38" size="1.778" layer="99">cut here</text>
 <text x="363.22" y="236.22" size="1.778" layer="99">cut here</text>
 <text x="449.58" y="243.84" size="1.778" layer="99" rot="R90">&lt;- cut here</text>
-<text x="304.8" y="220.98" size="1.778" layer="90">3mA max -&gt; min 1.1k </text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="226.06" y="27.94"/>
