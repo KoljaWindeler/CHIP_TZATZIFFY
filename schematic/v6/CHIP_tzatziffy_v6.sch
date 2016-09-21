@@ -26181,11 +26181,11 @@ Connection</text>
 <wire x1="233.68" y1="35.56" x2="274.32" y2="35.56" width="0.4064" layer="94" style="shortdash"/>
 <text x="236.22" y="81.28" size="1.778" layer="94" font="vector" ratio="12">1W EEPROM</text>
 <text x="530.86" y="246.38" size="1.778" layer="91">1.255V</text>
-<text x="543.56" y="264.16" size="1.778" layer="91">19.2V</text>
-<text x="530.86" y="233.68" size="1.778" layer="91">0.567 mA</text>
 <text x="363.22" y="246.38" size="1.778" layer="99">cut here</text>
 <text x="363.22" y="236.22" size="1.778" layer="99">cut here</text>
 <text x="449.58" y="243.84" size="1.778" layer="99" rot="R90">&lt;- cut here</text>
+<text x="520.7" y="238.76" size="1.778" layer="91">4.53K for 10.0V</text>
+<text x="520.7" y="236.22" size="1.778" layer="91">2.21K for 19.2V</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="226.06" y="27.94"/>
