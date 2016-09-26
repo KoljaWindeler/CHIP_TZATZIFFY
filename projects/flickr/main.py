@@ -32,11 +32,30 @@ class FullScreenApp(object):
 		master.configure(background='black')
 		master.bind('<Escape>',self.leave) 
 		master.attributes('-fullscreen', True)
+		fr = tk.Frame(master)
+		fr.pack(expand=1) 
 
-
+		# font
 		helv36 = font.Font(family='Helvetica',size=36, weight='bold')  # you don't have to use Helvetica or bold, this is just an example
-		button = tk.Button(master, justify=tk.CENTER, highlightthickness=0, bd=0, borderwidth=0, command=lambda: self.update_img(silent = 0), compound=tk.CENTER, font=helv36)
-		button.pack() 
+		button = tk.Button(fr)
+		# design
+		button.configure(justify=tk.CENTER)
+		button.configure(highlightthickness=0)
+		button.configure(bd=0)
+		button.configure(borderwidth=0)
+		button.configure(compound=tk.CENTER)
+		button.configure(font=helv36)
+		button.configure(padx=0)
+		button.configure(pady=0)
+		button.configure(highlightcolor='pink')
+		button.configure(highlightbackground='pink')
+		button.configure(activebackground='black')
+		button.configure(activeforeground='orange')
+		button.configure(bg='black')
+		# go
+		button.configure(command=lambda: self.update_img(silent = 0))
+		button.pack(anchor=tk.CENTER)
+
 
 		self.button = button
 		self.button_image = ""
@@ -66,7 +85,6 @@ class FullScreenApp(object):
 		self.button_image_photo = ImageTk.PhotoImage(self.button_image)
 		# set it
 		self.button.configure(image = self.button_image_photo, text = "")	
-		self.button.image = self.button_image_photo
 		self.master.after(5*60*1000, self.update_img)
 
 	def leave(self,event):
