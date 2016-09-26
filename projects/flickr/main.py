@@ -1,25 +1,21 @@
 # basic code from >>
 # http://tkinter.unpythonic.net/wiki/PhotoImage
-# sudo apt-get install python3-imaging-tk
-# sudo apt-get install python3-pil
-# sudo apt-get install python3-tk
+# sudo apt-get install python3-pil.imagetk python3-pil python3-tk
 
 
 # extra code -------------------------------------------------------------------------
 from __future__ import print_function
 
 import tkinter as tk
-from PIL import ImageTk, Image
+from tkinter import font
+
+
+from PIL import ImageTk, Image, ImageEnhance
+
+
 import sys, time
 import platform
-import hashlib
-import json
-import random
-import urllib.request
-import urllib.parse
 import sys
-from random import randint
-import settings
 import flickr
 
 
@@ -37,30 +33,42 @@ class FullScreenApp(object):
 		master.bind('<Escape>',self.leave) 
 		master.attributes('-fullscreen', True)
 
-		button = tk.Button(master, justify=tk.CENTER, highlightthickness=0, bd=0, borderwidth=0, command=self.update_img)
+
+		helv36 = font.Font(family='Helvetica',size=36, weight='bold')  # you don't have to use Helvetica or bold, this is just an example
+		button = tk.Button(master, justify=tk.CENTER, highlightthickness=0, bd=0, borderwidth=0, command=lambda: self.update_img(silent = 0), compound=tk.CENTER, font=helv36)
 		button.pack() 
-		self.button = button   
-		
+
+		self.button = button
+		self.button_image = ""
 		self.update_total_img()
-		self.update_img()
+		self.update_img(silent = 1)
 
 	def update_total_img(self):
 		self.max_photo = flickr.get_photo_count()
 		self.master.after(6*60*60*1000, self.update_total_img)
 
-	def update_img(self):
-		now = time.strftime("%H:%M:%S")
-		print(now)
-		
-#		if(randint(0,9)>5):
-#			btn_img = resize_img('/home/kolja/Desktop/1.jpg')
-#		else:
-#			btn_img = resize_img('/home/kolja/Desktop/2514d628d165cec85d3f4b3907655195a05a5bc0.jpg')
-		btn_img = resize_img(flickr.get_random_photo(self.max_photo))
+	def update_img(self,silent = 1):
+		# call it with silent == 0, on button push; else silent == 1 
+		print(time.strftime("%H:%M:%S"))
+		if(silent != 1):
+			print("non silent update, add 'Loading' label")
+			self.button.configure(text = "Loading ...")
 
-		self.button.configure(image = btn_img)	
-		self.button.image = btn_img
+			# if there was an old image, show it as grayscale
+			if(self.button_image!=""):
+				self.button_image_photo = ImageTk.PhotoImage(self.button_image.convert('LA'))
+				self.button.configure(image = self.button_image_photo)	
+				self.button.image = self.button_image_photo
+				self.master.update()
+
+		# download new image
+		self.button_image = resize_img(flickr.get_random_photo(self.max_photo))
+		self.button_image_photo = ImageTk.PhotoImage(self.button_image)
+		# set it
+		self.button.configure(image = self.button_image_photo, text = "")	
+		self.button.image = self.button_image_photo
 		self.master.after(5*60*1000, self.update_img)
+
 	def leave(self,event):
 		exit()
 
@@ -74,7 +82,7 @@ def resize_img(path):
 	else:
 		scale = scale_y
 	img = img.resize((int(img.size[0]*scale), int(img.size[1]*scale)), Image.ANTIALIAS) 
-	return ImageTk.PhotoImage(img)
+	return img
 	
 root=tk.Tk()
 app = FullScreenApp(root)
