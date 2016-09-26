@@ -9,7 +9,7 @@
 from __future__ import print_function
 
 import tkinter as tk
-#from PIL import ImageTk, Image
+from PIL import ImageTk, Image
 import sys, time
 import platform
 import hashlib
@@ -67,7 +67,6 @@ class FullScreenApp(object):
 
 def resize_img(path):
 	img = Image.open(path)
-	#img = Image.open(settings.temp_path)
 	scale_x = root.winfo_screenwidth()/img.size[0]
 	scale_y = root.winfo_screenheight()/img.size[1]
 	if(scale_x<scale_y):
