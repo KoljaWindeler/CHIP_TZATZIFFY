@@ -1,0 +1,555 @@
+/*
+ * Copyright 2015 Maxime Ripard
+ *
+ * Maxime Ripard <maxime.ripard@free-electrons.com>
+ *
+ * This file is dual-licensed: you can use it either under the terms
+ * of the GPL or the X11 license, at your option. Note that this dual
+ * licensing only applies to this file, and not this project as a
+ * whole.
+ *
+ *  a) This file is free software; you can redistribute it and/or
+ *     modify it under the terms of the GNU General Public License as
+ *     published by the Free Software Foundation; either version 2 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This file is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ * Or, alternatively,
+ *
+ *  b) Permission is hereby granted, free of charge, to any person
+ *     obtaining a copy of this software and associated documentation
+ *     files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use,
+ *     copy, modify, merge, publish, distribute, sublicense, and/or
+ *     sell copies of the Software, and to permit persons to whom the
+ *     Software is furnished to do so, subject to the following
+ *     conditions:
+ *
+ *     The above copyright notice and this permission notice shall be
+ *     included in all copies or substantial portions of the Software.
+ *
+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ *     OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/dts-v1/;
+#include "sun5i-r8.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+	model = "NextThing C.H.I.P.";
+	compatible = "nextthing,chip", "allwinner,sun5i-r8";
+
+	aliases {
+		i2c0 = &i2c0;
+		i2c1 = &i2c1;
+		i2c2 = &i2c2;
+		serial0 = &uart1;
+		serial1 = &uart3;
+	};
+
+	chosen {
+		stdout-path = "serial0:115200n8";
+	};
+
+	onewire {
+		compatible = "w1-gpio";
+		gpios = <&pio 3 2 GPIO_ACTIVE_HIGH>; /* PD2 */
+		pinctrl-names = "default";
+		pinctrl-0 = <&chip_w1_pin>;
+	};
+
+	dram_vcc: dram_vcc {
+		compatible = "regulator-fixed";
+		regulator-name = "dram-vcc";
+		regulator-min-microvolt = <1600000>;
+		regulator-max-microvolt = <1600000>;
+		vin-supply = <&ipsout>;
+		regulator-always-on;
+	};
+
+	ipsout: ipsout {
+		compatible = "regulator-fixed";
+		regulator-name = "ipsout";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		regulator-always-on;
+	};
+
+	usb0_vbus: usb0_vbus {
+		compatible = "regulator-fixed";
+		pinctrl-names = "default";
+		pinctrl-0 = <&chip_vbus_pin>;
+
+		regulator-name = "vbus-usb0";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		vin-supply = <&vcc_5v0>;
+		gpio = <&pio 1 10 GPIO_ACTIVE_HIGH>; /* PB10 */
+		enable-active-high;
+	};
+
+	vcc_3v3: vcc3v3 {
+		compatible = "regulator-fixed";
+		regulator-name = "vcc-3v3";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		vin-supply = <&ipsout>;
+		regulator-always-on;
+	};
+
+	vcc_5v0: vcc5v0 {
+		compatible = "regulator-fixed";
+		regulator-name = "vcc-5v0";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		vin-supply = <&ipsout>;
+		regulator-always-on;
+	};
+
+	/*
+	 * This is actually an active-low reset line for the WLAN
+	 * part of the WiFi/BT CHIP.
+	 *
+	 * Just like for LDO3 and LDO4, we cannot tie it to the DT
+	 * node of the SDIO device for now, as there is no bindings
+	 * for it, so we need to have this hack.
+	 */
+	wifi_reg_on: wifi_reg_on {
+		compatible = "regulator-fixed";
+		pinctrl-names = "default";
+		pinctrl-0 = <&chip_wifi_reg_on_pin>;
+
+		regulator-name = "wifi-reg-on";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-always-on;
+		gpio = <&pio 2 19 GPIO_ACTIVE_HIGH>; /* PC19 */
+		enable-active-high;
+	};
+
+	/*
+	 * Both LDO3 and LDO4 are used in parallel to power up the
+	 * WiFi/BT Chip.
+	 *
+	 * If those are not enabled, the SDIO part will not enumerate,
+	 * and since there's no way currently to pass DT infos to an
+	 * SDIO device, we cannot really do better than this ugly hack
+	 * for now.
+	 */
+
+	vcc_wifi: wifi_reg {
+		compatible = "coupled-voltage-regulator";
+		regulator-name = "vcc-wifi";
+		vin0-supply = <&vcc_wifi_1>;
+		vin1-supply = <&vcc_wifi_2>;
+		regulator-always-on;
+	};
+
+	panel: panel {
+		compatible = "olimex,lcd-olinuxino-43-ts";
+	};
+	backlight: backlight {
+		compatible = "pwm-backlight";
+		brightness-levels = <0 1 2 4 8 12 16 24 28 32 100>;
+		default-brightness-level = <8>;
+	
+		pinctrl-names = "default";
+		pinctrl-0 = <&chip_bl_en>;
+	};
+};
+
+&codec {
+	routing =
+		"Headphone Jack", "HP Left",
+		"Headphone Jack", "HP Right";
+	status = "okay";
+};
+
+&de {
+	allwinner,panel = <&panel>;
+	status = "okay";
+};
+
+&ehci0 {
+	status = "okay";
+};
+
+&i2c0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c0_pins_a>;
+	status = "okay";
+
+	axp209: pmic@34 {
+		compatible = "x-powers,axp209";
+		reg = <0x34>;
+
+		/*
+		 * The interrupt is routed through the "External Fast
+                 * Interrupt Request" pin (ball G13 of the module)
+                 * directly to the main interrupt controller, without
+                 * any other controller interfering.
+		 */
+		interrupts = <0>;
+
+		interrupt-controller;
+		#interrupt-cells = <1>;
+
+		regulators {
+			vdd_cpu: dcdc2 {
+				regulator-min-microvolt = <1000000>;
+				regulator-max-microvolt = <1300000>;
+				regulator-name = "cpuvdd";
+				regulator-always-on;
+			};
+
+			vdd_core: dcdc3 {
+				regulator-min-microvolt = <1000000>;
+				regulator-max-microvolt = <1300000>;
+				regulator-name = "corevdd";
+				regulator-always-on;
+			};
+
+			vdd_rtc: ldo1 {
+				regulator-min-microvolt = <1300000>;
+				regulator-max-microvolt = <1300000>;
+				regulator-name = "rtcvdd";
+				regulator-always-on;
+			};
+
+			avcc: ldo2 {
+				regulator-min-microvolt = <2700000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-name = "avcc";
+				regulator-always-on;
+			};
+
+			vcc_wifi_1: ldo3 {
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-name = "vcc-wifi-1";
+			};
+
+			vcc_wifi_2: ldo4 {
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-name = "vcc-wifi-2";
+			};
+
+			vcc_1v8: ldo5 {
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+				regulator-name = "vcc-1v8";
+			};
+		};
+	};
+};
+
+/*
+ * i2c1 is routed to the external pins and doesn't have any device
+ * attached to it on the C.H.I.P itself.
+ */
+&i2c1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c1_pins_a>;
+	status = "okay";
+};
+
+&i2c2 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c2_pins_a>;
+	status = "okay";
+
+	xio: gpio@38 {
+		compatible = "nxp,pcf8574a";
+		reg = <0x38>;
+
+		gpio-controller;
+		#gpio-cells = <2>;
+
+		interrupt-parent = <&pio>;
+		interrupts = <6 0 IRQ_TYPE_EDGE_FALLING>;
+		interrupt-controller;
+		#interrupt-cells = <2>;
+	};
+};
+
+&mmc0_pins_a {
+	allwinner,pull = <SUN4I_PINCTRL_PULL_UP>;
+};
+
+&mmc0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&mmc0_pins_a>;
+	vmmc-supply = <&vcc_3v3>;
+	bus-width = <4>;
+	non-removable;
+	status = "okay";
+};
+
+&mmc2 { 
+	vmmc-supply = <&vcc_3v3>;
+	vqmmc-supply = <&vcc_3v3>;
+	pinctrl-names = "default";
+	compatible = "allwinner,sun5i-a13-mmc";
+	pinctrl-0 = <&chip_sdio_pins>,  <&chip_sdio_cd>;
+	bus-width = <4>;
+	clocks = <&ahb_gates 10>,<&mmc2_clk 0>,<&mmc2_clk 1>,<&mmc2_clk 2>;
+	// and go!
+	status = "okay";
+	//cd-gpios = <&pio 1 3 GPIO_ACTIVE_HIGH>;
+	broken-cd; // doenst work with pchip
+};
+
+
+&nfc {
+	pinctrl-names = "default";
+	pinctrl-0 = <&nand_pins_a &nand_cs0_pins_a &nand_rb0_pins_a>;
+	status = "okay";
+
+	nand@0 {
+		#address-cells = <2>;
+		#size-cells = <2>;
+		reg = <0>;
+		allwinner,rb = <0>;
+		nand-ecc-mode = "hw";
+		nand-ecc-step-size = <1024>;
+		nand-ecc-strength = <56>;
+    /*
+		nand-on-flash-bbt;
+    */
+		allwinner,randomize;
+
+		spl@0 {
+			label = "SPL";
+			reg = /bits/ 64 <0x0 0x400000>;
+		};
+
+		spl-backup@400000 {
+			label = "SPL.backup";
+			reg = /bits/ 64 <0x400000 0x400000>;
+		};
+
+		u-boot@800000 {
+			label = "U-Boot";
+			reg = /bits/ 64 <0x800000 0x400000>;
+		};
+
+		env@c00000 {
+			label = "env";
+			reg = /bits/ 64 <0xc00000 0x400000>;
+		};
+
+		rootfs@1000000 {
+			label = "rootfs";
+			reg = /bits/ 64 <0x1000000 0x1ff000000>;
+		};
+	};
+};
+
+&ohci0 {
+	status = "okay";
+};
+
+&otg_sram {
+	status = "okay";
+};
+
+&pio { 
+
+	chip_sdio_cd: mmc2_cd@0 {
+		allwinner,pins = "PB3";
+		allwinner,function = "gpio_in";
+		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+		allwinner,pull = <SUN4I_PINCTRL_PULL_UP>;
+	};
+
+	chip_sdio_pins: mmc2@42 {
+		allwinner,pins = "PE4", "PE5", "PE6", "PE7", "PE8", "PE9";
+		allwinner,function = "mmc2";
+		allwinner,drive = <SUN4I_PINCTRL_30_MA>;
+		allwinner,pull = <SUN4I_PINCTRL_PULL_UP>;	
+	};
+
+	mmc2_cd@0 {
+		allwinner,pins = "PB3"; allwinner,function = "gpio_in";
+		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+		allwinner,pull = <SUN4I_PINCTRL_PULL_UP>;
+	};
+
+
+	chip_vbus_pin: chip_vbus_pin@0 {
+	        allwinner,pins = "PB10";
+	        allwinner,function = "gpio_out";
+	        allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+	        allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+	};
+
+	chip_wifi_reg_on_pin: chip_wifi_reg_on_pin@0 {
+	        allwinner,pins = "PC19";
+	        allwinner,function = "gpio_out";
+	        allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+	        allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+	};
+
+	chip_id_det_pin: chip_id_det_pin@0 {
+	        allwinner,pins = "PG2";
+	        allwinner,function = "gpio_in";
+	        allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+	        allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+	};
+
+	chip_w1_pin: chip_w1_pin@0 {
+		allwinner,pins = "PD2";
+		allwinner,function = "gpio_in";
+	        allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+	        allwinner,pull = <SUN4I_PINCTRL_PULL_UP>;
+	};
+	chip_bl_en: chip_backlight_enable@0 {
+		allwinner,pins = "PD18";
+		allwinner,function = "gpio_out";
+		allwinner,drive = <SUN4I_PINCTRL_10_MA>;
+		allwinner,pull = <SUN4I_PINCTRL_NO_PULL>;
+	};
+};
+
+&uart1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart1_pins_b>;
+	status = "okay";
+};
+
+&uart3 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart3_pins_a>,
+		    <&uart3_pins_cts_rts_a>;
+	status = "okay";
+};
+
+&pwm {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pwm0_pins>;
+	status = "okay";
+};
+&backlight {
+	pwms = <&pwm 0 8000 1>;
+	enable-gpios = <&pio 3 18 GPIO_ACTIVE_HIGH>;
+};
+
+
+
+&usb_otg {
+	dr_mode = "otg";
+	status = "okay";
+};
+
+&usbphy {
+	pinctrl-names = "default";
+	pinctrl-0 = <&chip_id_det_pin>;
+	status = "okay";
+
+	usb0_id_det-gpio = <&pio 6 2 GPIO_ACTIVE_HIGH>; /* PG2 */
+
+	usb0_vbus-supply = <&usb0_vbus>;
+	usb1_vbus-supply = <&vcc_5v0>;
+};
+
+&i2c1 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&i2c1_pins_a>;
+        status = "okay";
+        /* keyboard scanner */
+        tca8418@34 {
+                compatible = "ti,tca8418";
+                reg = <0x34>;
+                /* the interrupt is specified as:
+                        The first cell is the number of the bank
+                        The second cell is the interrupt inside that bank
+                        The third cell is used to specify flags
+                */
+                interrupt-parent = <&pio>;
+                interrupts = <6 1 IRQ_TYPE_EDGE_FALLING>;    /* AP-EINT1 */
+                keypad,num-rows = <6>;
+                keypad,num-columns = <10>;
+                keypad,autorepeat;
+                linux,keymap = <
+			MATRIX_KEY(0, 0, 13)
+			MATRIX_KEY(0, 1, KEY_1)
+			MATRIX_KEY(0, 2, KEY_2)
+			MATRIX_KEY(0, 3, KEY_3)
+			MATRIX_KEY(0, 4, KEY_4)
+			MATRIX_KEY(0, 5, KEY_5)
+			MATRIX_KEY(0, 6, KEY_6)
+			MATRIX_KEY(0, 7, KEY_7)
+			MATRIX_KEY(0, 8, KEY_8)
+			MATRIX_KEY(0, 9, KEY_9)
+
+			MATRIX_KEY(1, 0, KEY_Q)
+			MATRIX_KEY(1, 1, KEY_W)
+			MATRIX_KEY(1, 2, KEY_E)
+			MATRIX_KEY(1, 3, KEY_R)
+			MATRIX_KEY(1, 4, KEY_T)
+			MATRIX_KEY(1, 5, KEY_Y)
+			MATRIX_KEY(1, 6, KEY_U)
+			MATRIX_KEY(1, 7, KEY_I)
+			MATRIX_KEY(1, 8, KEY_O)
+			MATRIX_KEY(1, 9, KEY_P)
+
+			MATRIX_KEY(2, 0, KEY_A)
+			MATRIX_KEY(2, 1, KEY_S)
+			MATRIX_KEY(2, 2, KEY_D)
+			MATRIX_KEY(2, 3, KEY_F)
+			MATRIX_KEY(2, 4, KEY_G)
+			MATRIX_KEY(2, 5, KEY_H)
+			MATRIX_KEY(2, 6, KEY_J)
+			MATRIX_KEY(2, 7, KEY_K)
+			MATRIX_KEY(2, 8, KEY_L)
+			MATRIX_KEY(2, 9, KEY_ENTER)
+
+			MATRIX_KEY(3, 0, KEY_TAB)
+			MATRIX_KEY(3, 1, KEY_Z)
+			MATRIX_KEY(3, 2, KEY_X)
+			MATRIX_KEY(3, 3, KEY_C)
+			MATRIX_KEY(3, 4, KEY_V)
+			MATRIX_KEY(3, 5, KEY_B)
+			MATRIX_KEY(3, 6, KEY_N)
+			MATRIX_KEY(3, 7, KEY_M)
+			MATRIX_KEY(3, 8, KEY_UP)
+			MATRIX_KEY(3, 9, KEY_DOWN)
+
+			MATRIX_KEY(4, 0, KEY_ESC)
+			MATRIX_KEY(4, 1, KEY_RIGHTALT)
+			MATRIX_KEY(4, 2, KEY_LEFTALT)
+			MATRIX_KEY(4, 3, KEY_SPACE)
+			MATRIX_KEY(4, 4, KEY_RIGHTCTRL)
+			MATRIX_KEY(4, 5, KEY_SLASH)
+			MATRIX_KEY(4, 6, KEY_RIGHTSHIFT)
+			MATRIX_KEY(4, 8, KEY_LEFT)
+			MATRIX_KEY(4, 9, KEY_RIGHT)
+
+			MATRIX_KEY(5, 0, KEY_LEFTSHIFT)
+			MATRIX_KEY(5, 1, KEY_0)
+			MATRIX_KEY(5, 2, KEY_KPMINUS )
+			MATRIX_KEY(5, 3, KEY_BACKSPACE)
+			MATRIX_KEY(5, 4, KEY_DOT)
+                >;
+        };
+};
+
+
+&rtp {
+        allwinner,ts-attached;
+};
