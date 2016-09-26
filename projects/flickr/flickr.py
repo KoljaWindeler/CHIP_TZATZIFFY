@@ -57,6 +57,7 @@ def setup():
 	if(settings.api_key == "" ):
 		print("you have to get an api key at: https://www.flickr.com/services/apps/create/noncommercial/?")
 		print("add the key and secret values in the setting.py and rerun")
+		exit()
 		return -1
 	elif(settings.frob == "" ):
 		url="https://flickr.com/services/rest/?method=flickr.auth.getFrob&api_key="+settings.api_key+"&format=json"
