@@ -59,6 +59,7 @@ class FullScreenApp(object):
 
 		self.button = button
 		self.button_image = ""
+		self.callback_handle = None
 		self.update_total_img()
 		self.update_img(silent = 1)
 
@@ -84,8 +85,12 @@ class FullScreenApp(object):
 		self.button_image = resize_img(flickr.get_random_photo(self.max_photo))
 		self.button_image_photo = ImageTk.PhotoImage(self.button_image)
 		# set it
-		self.button.configure(image = self.button_image_photo, text = "")	
-		self.master.after(5*60*1000, self.update_img)
+		self.button.configure(image = self.button_image_photo, text = "")
+
+		# disable callback and restart it
+		if(self.callback_handle is not None):
+			self.master.after_cancel(self.callback_handle)	
+		self.callback_handle = self.master.after(5*60*1000, self.update_img)
 
 	def leave(self,event):
 		exit()
