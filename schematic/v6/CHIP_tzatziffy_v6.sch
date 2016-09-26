@@ -26046,6 +26046,45 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
+<library name="wirepad">
+<description>&lt;b&gt;Single Pads&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="SMD2,54-5,08">
+<description>&lt;b&gt;SMD PAD&lt;/b&gt;</description>
+<smd name="1" x="0" y="0" dx="2.54" dy="5.08" layer="1"/>
+<text x="0" y="0" size="0.0254" layer="27">&gt;VALUE</text>
+<text x="-1.5" y="-2.5" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+</package>
+</packages>
+<symbols>
+<symbol name="PAD">
+<wire x1="-1.016" y1="1.016" x2="1.016" y2="-1.016" width="0.254" layer="94"/>
+<wire x1="-1.016" y1="-1.016" x2="1.016" y2="1.016" width="0.254" layer="94"/>
+<text x="-1.143" y="1.8542" size="1.778" layer="95">&gt;NAME</text>
+<text x="-1.143" y="-3.302" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="P" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SMD5" prefix="PAD" uservalue="yes">
+<description>&lt;b&gt;SMD PAD&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="PAD" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SMD2,54-5,08">
+<connects>
+<connect gate="1" pin="P" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -26145,6 +26184,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="RO" library="solpad" deviceset="LSP10" device=""/>
 <part name="D2" library="Keyboard v0_5" deviceset="DIODE_SCHTKY_B240" device="" value="B240A"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="12k"/>
+<part name="GND" library="wirepad" deviceset="SMD5" device="" value="GND"/>
+<part name="BTN" library="wirepad" deviceset="SMD5" device="" value="BTN"/>
+<part name="U$6" library="Keyboard v0.2" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -26331,6 +26373,9 @@ Connection</text>
 <instance part="RO" gate="1" x="360.68" y="259.08"/>
 <instance part="D2" gate="G$1" x="535.94" y="271.78"/>
 <instance part="R6" gate="G$1" x="325.12" y="226.06" rot="MR180"/>
+<instance part="GND" gate="1" x="256.54" y="142.24" rot="R270"/>
+<instance part="BTN" gate="1" x="266.7" y="142.24" rot="R270"/>
+<instance part="U$6" gate="M" x="256.54" y="129.54"/>
 </instances>
 <busses>
 </busses>
@@ -26694,6 +26739,11 @@ Connection</text>
 <pinref part="GND1" gate="1" pin="GND"/>
 <wire x1="472.44" y1="165.1" x2="480.06" y2="165.1" width="0.1524" layer="91"/>
 <wire x1="480.06" y1="165.1" x2="480.06" y2="160.02" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$6" gate="M" pin="GND"/>
+<pinref part="GND" gate="1" pin="P"/>
+<wire x1="256.54" y1="132.08" x2="256.54" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="I2C-SDA" class="0">
@@ -27208,9 +27258,15 @@ Connection</text>
 </net>
 <net name="PWR_ON" class="0">
 <segment>
-<wire x1="408.94" y1="160.02" x2="422.91" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="408.94" y1="160.02" x2="421.64" y2="160.02" width="0.1524" layer="91"/>
 <label x="411.48" y="160.02" size="1.778" layer="95" font="vector" ratio="12"/>
 <pinref part="J1" gate="G$1" pin="PWRON"/>
+<wire x1="421.64" y1="160.02" x2="421.64" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="421.64" y1="187.96" x2="320.04" y2="187.96" width="0.1524" layer="91"/>
+<wire x1="320.04" y1="187.96" x2="320.04" y2="127" width="0.1524" layer="91"/>
+<pinref part="BTN" gate="1" pin="P"/>
+<wire x1="320.04" y1="127" x2="266.7" y2="127" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="127" x2="266.7" y2="139.7" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="UART_TX" class="0">
