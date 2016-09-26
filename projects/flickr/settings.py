@@ -1,6 +1,0 @@
-api_key=""
-secret=""
-frob=""
-token=""
-user_id=""
-temp_path="001.jpg"
