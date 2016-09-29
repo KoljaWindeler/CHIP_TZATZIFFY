@@ -32,6 +32,7 @@ class FullScreenApp(object):
 		master.configure(background='black')
 		master.bind('<Escape>',self.leave) 
 		master.attributes('-fullscreen', True)
+		master.configure(cursor="none")
 		fr = tk.Frame(master)
 		fr.pack(expand=1) 
 
