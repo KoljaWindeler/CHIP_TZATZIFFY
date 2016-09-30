@@ -18733,7 +18733,7 @@ design rules under a new name.</description>
 <attribute name="VENDOR" value="BOURNS" x="22.317" y="28.176" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="LINK" value="http://www.digikey.com/product-detail/en/SRN6045-100M/SRN6045-100MTR-ND/2756120" x="22.317" y="28.176" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MFG_PN" value="SRN6045-100MTR-ND" x="22.317" y="28.176" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="17.557" y="27.922" size="0.8128" layer="25" font="vector" rot="R90"/>
+<attribute name="NAME" x="18.453" y="25.432" size="0.8128" layer="25" font="vector" rot="R180"/>
 <attribute name="VALUE" x="14.697" y="30.716" size="1" layer="27" font="vector" rot="R270"/>
 </element>
 <element name="X1" library="Keyboard v0_5" package="FH12-40S-0.5SH" value="FH12-40S-0.5SH" x="21.222" y="5.286" smashed="yes">
