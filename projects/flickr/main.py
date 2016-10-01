@@ -12,10 +12,7 @@ from tkinter import font
 
 from PIL import ImageTk, Image, ImageEnhance
 
-
-import sys, time
-import platform
-import sys
+import sys, time, sys, random, platform
 import flickr
 
 
@@ -61,15 +58,30 @@ class FullScreenApp(object):
 		self.button = button
 		self.button_image = ""
 		self.callback_handle = None
-		self.update_total_img()
+		# choose source, album or all picture
+		if(self.update_album_img()==-1):
+			print("[init] Switching to total account mode")
+			self.update_total_img()		
+		else:
+			print("[init] Switching to album mode")
+
 		self.update_img(silent = 1)
 
+	def update_album_img(self):
+		self.p_list = flickr.get_photos_for_album()
+		self.max_photo = 0
+		return self.p_list
+
 	def update_total_img(self):
+		self.p_list = []
+		print("[init] Requesting total nr of photos on your account")
 		self.max_photo = flickr.get_photo_count()
+		print("[init] %d photos found"%self.max_photo)
 		self.master.after(6*60*60*1000, self.update_total_img)
 
 	def update_img(self,silent = 1):
 		# call it with silent == 0, on button push; else silent == 1 
+		print("")
 		print(time.strftime("%H:%M:%S"))
 		if(silent != 1):
 			print("non silent update, add 'Loading' label")
@@ -81,9 +93,20 @@ class FullScreenApp(object):
 				self.button.configure(image = self.button_image_photo)	
 				self.button.image = self.button_image_photo
 				self.master.update()
+		else:
+			print("silent update, skipping 'Loading' label")
 
 		# download new image
-		self.button_image = resize_img(flickr.get_random_photo(self.max_photo))
+		if(len(self.p_list)==0):
+			print("All photos - mode")
+			self.button_image = resize_img(flickr.get_photo(flickr.get_random_photo_url(self.max_photo)))
+		else:
+			print("Album limited mode")
+			r = random.randrange(0,len(self.p_list))
+			print("selected photo "+str(r)+"/"+str(len(self.p_list)))
+			self.button_image = resize_img(flickr.get_photo(self.p_list[r]))
+			
+			
 		self.button_image_photo = ImageTk.PhotoImage(self.button_image)
 		# set it
 		self.button.configure(image = self.button_image_photo, text = "")

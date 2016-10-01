@@ -8,7 +8,7 @@ import urllib.parse
 import sys
 import settings
 
-########################################## flickr #####################################	
+########################################################################################
 def get_api_sig_link(link):
 	arg=link.split("?")
 	arg=arg[1].split("&")
@@ -23,9 +23,8 @@ def get_api_sig_link(link):
 	data = req.read().decode('utf-8')
 	#print(data)
 	return data
-
+########################################################################################
 def get_photo_count():
-	print("Requesting total nr of photos on your account")
 	if(settings.api_key == "" or settings.user_id == "" or settings.token == ""):
 		setup()
 		return -1
@@ -34,11 +33,37 @@ def get_photo_count():
 		page = get_api_sig_link(url)
 		dec=json.loads(page)
 		total=int(dec['photos']['total'])
-		print("%d photos found"%total)
 	return total
+########################################################################################
+def get_albums():
+	link="https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key="+settings.api_key+"&user_id="+settings.user_id+"&format=json&nojsoncallback=1&auth_token="+settings.token
+	page = get_api_sig_link(link)
+	dec=json.loads(page)
+
+	for i in range(0,int(dec['photosets']['total'])):
+		print("%02d"%i+", id="+dec['photosets']['photoset'][i]['id']+", %04d Phtotos, "%dec['photosets']['photoset'][i]['photos']+dec['photosets']['photoset'][i]['title']['_content'])
+########################################################################################
+def get_photos_for_album():
+	if(not(settings.photoset_id!="")):
+		return -1
+
+	link="https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&photoset_id="+settings.photoset_id+"&api_key="+settings.api_key+"&user_id="+settings.user_id+"&format=json&nojsoncallback=1&auth_token="+settings.token
+
+	page = get_api_sig_link(link)
+	dec=json.loads(page)
 	
-	
-def get_random_photo(max_photo_count):
+	p_list = []
+	for i in range(0,len(dec['photoset']['photo'])):
+		p_id=dec['photoset']['photo'][i]['id']
+		p_secret=dec['photoset']['photo'][i]['secret']
+		p_server=dec['photoset']['photo'][i]['server']
+		p_farm=dec['photoset']['photo'][i]['farm']
+		p_url = "http://farm"+str(p_farm)+".static.flickr.com/"+str(p_server)+"/"+str(p_id)+"_"+str(p_secret)+"_b.jpg";
+		p_list.append(p_url)
+
+	return p_list
+########################################################################################
+def get_random_photo_url(max_photo_count):
 	if(settings.api_key == "" or settings.user_id == "" or settings.token == ""):
 		setup()
 		return -1
@@ -49,10 +74,14 @@ def get_random_photo(max_photo_count):
 		page = get_api_sig_link(url)
 		dec=json.loads(page)
 		url="https://farm"+str(dec['photos']['photo'][0]['farm'])+".staticflickr.com/"+str(dec['photos']['photo'][0]['server'])+"/"+str(dec['photos']['photo'][0]['id'])+"_"+str(dec['photos']['photo'][0]['secret'])+"_b.jpg"
+		return url
+########################################################################################
+def get_photo(url):
+		print("Downloading .. ",end="")
 		urllib.request.urlretrieve (url, settings.temp_path)
 		print("Done")
 		return settings.temp_path
-
+########################################################################################
 def setup():
 	if(settings.api_key == "" ):
 		print("you have to get an api key at: https://www.flickr.com/services/apps/create/noncommercial/?")
