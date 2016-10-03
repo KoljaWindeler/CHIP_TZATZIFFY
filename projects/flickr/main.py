@@ -70,6 +70,8 @@ class FullScreenApp(object):
 	def update_album_img(self):
 		self.p_list = flickr.get_photos_for_album()
 		self.max_photo = 0
+		if(self.p_list != -1):
+			self.master.after(6*60*60*1000, self.update_album_img)
 		return self.p_list
 
 	def update_total_img(self):
