@@ -7,6 +7,9 @@ from PIL import ImageTk, Image, ImageEnhance
 import sys, time, sys, random, platform, time, os
 import flickr
 
+time_regular_update = 5*60*1000
+time_splash = 1000
+time_account_refresh = 6*60*60*1000
 
 ########################################## go #####################################
 
@@ -65,7 +68,7 @@ class FullScreenApp(object):
 		self.p_list = flickr.get_photos_for_album()
 		self.max_photo = 0
 		if(self.p_list != -1):
-			self.master.after(6*60*60*1000, self.update_album_img)
+			self.master.after(time_account_refresh, self.update_album_img)
 		return self.p_list
 
 	def update_total_img(self):
@@ -73,11 +76,11 @@ class FullScreenApp(object):
 		print("[init] Requesting total nr of photos on your account")
 		self.max_photo = flickr.get_photo_count()
 		print("[init] %d photos found"%self.max_photo)
-		self.master.after(6*60*60*1000, self.update_total_img)
+		self.master.after(time_account_refresh, self.update_total_img)
 
 	def update_img(self,silent = 1,splash=0):
 		# call it with silent == 0, on button push; else silent == 1 
-		recall_time=5*60*1000
+		recall_time=time_regular_update
 		print("")
 		print(time.strftime("%H:%M:%S"))
 		if(silent != 1):
@@ -96,7 +99,7 @@ class FullScreenApp(object):
 		if(splash):
 			print("Loading Splash ...")
 			self.button_image = resize_img(flickr.get_photo("file://"+os.path.dirname(os.path.realpath(__file__))+"/splash.png"))
-			recall_time=1000
+			recall_time=time_splash
 		else:
 			# download new image
 			if(len(self.p_list)==0):
