@@ -1,0 +1,4 @@
+vid in dec 42 for:
+python3 dip-header-generator.py TZATZIFFY.img --vid 42 --pid 02 --vendor 'JKW' --product 'TZATZIFFY' --product-version 2
+dip filename in hex 0x2a
+dip-2a-02
