@@ -26139,11 +26139,11 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <description>&lt;b&gt;Single Pads&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
 <packages>
-<package name="SMD2,54-5,08">
+<package name="SMD1,27-2,54">
 <description>&lt;b&gt;SMD PAD&lt;/b&gt;</description>
-<smd name="1" x="0" y="0" dx="2.54" dy="5.08" layer="1"/>
+<smd name="1" x="0" y="0" dx="1.27" dy="2.54" layer="1"/>
 <text x="0" y="0" size="0.0254" layer="27">&gt;VALUE</text>
-<text x="-1.5" y="-2.5" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="-0.8" y="-2.4" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 </package>
 <package name="1,6/0,8">
 <description>&lt;b&gt;THROUGH-HOLE PAD&lt;/b&gt;</description>
@@ -26171,13 +26171,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="SMD5" prefix="PAD" uservalue="yes">
+<deviceset name="SMD2" prefix="PAD" uservalue="yes">
 <description>&lt;b&gt;SMD PAD&lt;/b&gt;</description>
 <gates>
 <gate name="1" symbol="PAD" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SMD2,54-5,08">
+<device name="" package="SMD1,27-2,54">
 <connects>
 <connect gate="1" pin="P" pad="1"/>
 </connects>
@@ -27141,8 +27141,8 @@ www.irf.com&lt;p&gt;
 <part name="U$5" library="JKW_CHIP" deviceset="LOGO_10X10_SILK" device=""/>
 <part name="D2" library="Keyboard v0_5" deviceset="DIODE_SCHTKY_B240" device="" value="B240A"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="12k"/>
-<part name="GND" library="wirepad" deviceset="SMD5" device="" value="GND"/>
-<part name="BTN" library="wirepad" deviceset="SMD5" device="" value="BTN"/>
+<part name="GND" library="wirepad" deviceset="SMD2" device="" value="GND"/>
+<part name="BTN" library="wirepad" deviceset="SMD2" device="" value="BTN"/>
 <part name="U$6" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="SJ3" library="JKW_CHIP" deviceset="SMD_SJ_3WAY_CLOSED" device=""/>
 <part name="L-" library="wirepad" deviceset="1,6/0,8" device=""/>
