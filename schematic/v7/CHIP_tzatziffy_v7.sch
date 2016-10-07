@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.6.0">
+<eagle version="7.7.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -19181,11 +19181,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 <pad name="Y1" x="-20.34" y="6.41" drill="0.7" diameter="1.27" rot="R270"/>
 <pad name="Y2" x="-17.8" y="6.41" drill="0.7" diameter="1.27" rot="R270"/>
 </package>
-<package name="MP1584EN">
-<wire x1="0" y1="0" x2="0" y2="16.764" width="0.127" layer="21"/>
-<wire x1="0" y1="16.764" x2="22.098" y2="16.764" width="0.127" layer="21"/>
-<wire x1="22.098" y1="16.764" x2="22.098" y2="0" width="0.127" layer="21"/>
-<wire x1="22.098" y1="0" x2="0" y2="0" width="0.127" layer="21"/>
+<package name="MP1584EN_FRAMELESS">
 <pad name="VIN" x="1.778" y="1.778" drill="0.8" shape="long"/>
 <pad name="GNDIN" x="1.778" y="14.986" drill="0.8" shape="long"/>
 <pad name="GNDOUT" x="20.32" y="14.986" drill="0.8" shape="long"/>
@@ -20136,12 +20132,12 @@ Surface Mounting type.</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="MP1584EN">
+<deviceset name="MP1584EN_FRAMELESS">
 <gates>
-<gate name="G$1" symbol="MP1584EN" x="-12.7" y="-5.08"/>
+<gate name="G$1" symbol="MP1584EN" x="-12.7" y="5.08"/>
 </gates>
 <devices>
-<device name="" package="MP1584EN">
+<device name="" package="MP1584EN_FRAMELESS">
 <connects>
 <connect gate="G$1" pin="GNDIN" pad="GNDIN"/>
 <connect gate="G$1" pin="GNDOUT" pad="GNDOUT"/>
@@ -27165,7 +27161,7 @@ www.irf.com&lt;p&gt;
 <part name="USB" library="Spark" deviceset="USB" device="USB-MICROB-SMT-DIP"/>
 <part name="U$9" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="SJ4" library="JKW_CHIP" deviceset="SMD_SJ_3WAY_CLOSED" device=""/>
-<part name="U$10" library="JKW_CHIP" deviceset="MP1584EN" device=""/>
+<part name="U$10" library="JKW_CHIP" deviceset="MP1584EN_FRAMELESS" device=""/>
 <part name="U$11" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="U$22" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="PV" library="wirepad" deviceset="1,6/0,8" device=""/>
@@ -28308,7 +28304,7 @@ TST430MINI-05DP</text>
 <label x="556.26" y="106.68" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$32" class="0">
+<net name="L+OUT" class="0">
 <segment>
 <wire x1="281.94" y1="266.7" x2="281.94" y2="261.62" width="0.1524" layer="91"/>
 <wire x1="281.94" y1="261.62" x2="290.83" y2="261.62" width="0.1524" layer="91"/>
@@ -28318,7 +28314,7 @@ TST430MINI-05DP</text>
 <pinref part="L+" gate="P" pin="P"/>
 </segment>
 </net>
-<net name="N$33" class="0">
+<net name="L-OUT" class="0">
 <segment>
 <wire x1="292.1" y1="256.54" x2="290.83" y2="256.54" width="0.1524" layer="91"/>
 <wire x1="290.83" y1="256.54" x2="274.32" y2="256.54" width="0.1524" layer="91"/>
@@ -28328,7 +28324,7 @@ TST430MINI-05DP</text>
 <pinref part="L-" gate="P" pin="P"/>
 </segment>
 </net>
-<net name="N$34" class="0">
+<net name="R+OUT" class="0">
 <segment>
 <pinref part="PAM1" gate="G$1" pin="+OUT_R"/>
 <wire x1="325.12" y1="261.62" x2="335.28" y2="261.62" width="0.1524" layer="91"/>
@@ -28336,7 +28332,7 @@ TST430MINI-05DP</text>
 <pinref part="R+" gate="P" pin="P"/>
 </segment>
 </net>
-<net name="N$35" class="0">
+<net name="R-OUT" class="0">
 <segment>
 <pinref part="PAM1" gate="G$1" pin="-OUT_R"/>
 <wire x1="325.12" y1="256.54" x2="342.9" y2="256.54" width="0.1524" layer="91"/>
@@ -28344,7 +28340,7 @@ TST430MINI-05DP</text>
 <pinref part="R-" gate="P" pin="P"/>
 </segment>
 </net>
-<net name="N$36" class="0">
+<net name="INL" class="0">
 <segment>
 <wire x1="292.1" y1="246.38" x2="290.83" y2="246.38" width="0.1524" layer="91"/>
 <wire x1="290.83" y1="246.38" x2="266.7" y2="246.38" width="0.1524" layer="91"/>
@@ -28376,7 +28372,7 @@ TST430MINI-05DP</text>
 <junction x="290.83" y="243.84"/>
 </segment>
 </net>
-<net name="N$39" class="0">
+<net name="INR" class="0">
 <segment>
 <pinref part="PAM1" gate="G$1" pin="INR"/>
 <wire x1="350.52" y1="246.38" x2="325.12" y2="246.38" width="0.1524" layer="91"/>
