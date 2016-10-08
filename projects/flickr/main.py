@@ -5,11 +5,10 @@ from tkinter import font
 from PIL import ImageTk, Image, ImageEnhance
 
 import sys, time, sys, random, platform, time, os
-import flickr
+import flickr, settings
 
-time_regular_update = 5*60*1000
-time_splash = 1000
-time_account_refresh = 6*60*60*1000
+
+# sleep 1; xset +dpms; xset s activate
 
 ########################################## go #####################################
 
@@ -56,35 +55,17 @@ class FullScreenApp(object):
 		self.button_image = ""
 		self.callback_handle = None
 		# choose source, album or all picture
-		if(self.update_album_img()==-1):
-			print("[init] Switching to total account mode")
-			self.update_total_img()		
-		else:
-			print("[init] Switching to album mode")
-
-		self.update_img(silent = 1,splash = 1)
-
-	def update_album_img(self):
-		self.p_list = flickr.get_photos_for_album()
-		self.max_photo = 0
-		if(self.p_list != -1):
-			self.master.after(time_account_refresh, self.update_album_img)
-		return self.p_list
-
-	def update_total_img(self):
-		self.p_list = []
-		print("[init] Requesting total nr of photos on your account")
-		self.max_photo = flickr.get_photo_count()
-		print("[init] %d photos found"%self.max_photo)
-		self.master.after(time_account_refresh, self.update_total_img)
+		self.update_img(silent = 1,splash = 1) # show splash
+		self.master.update()
+		flickr.init()	# get data from flickr
 
 	def update_img(self,silent = 1,splash=0):
 		# call it with silent == 0, on button push; else silent == 1 
-		recall_time=time_regular_update
+		recall_time=settings.time_regular_update
 		print("")
 		print(time.strftime("%H:%M:%S"))
 		if(silent != 1):
-			print("non silent update, add 'Loading' label")
+			print("[GUI] click, non silent update, add 'Loading' label")
 			self.button.configure(text = "Loading ...")
 
 			# if there was an old image, show it as grayscale
@@ -94,24 +75,13 @@ class FullScreenApp(object):
 				self.button.image = self.button_image_photo
 				self.master.update()
 		else:
-			print("silent update, skipping 'Loading' label")
+			print("[GUI] silent update, skipping 'Loading' label")
 
 		if(splash):
-			print("Loading Splash ...")
-			self.button_image = resize_img(flickr.get_photo("file://"+os.path.dirname(os.path.realpath(__file__))+"/splash.png"))
-			recall_time=time_splash
-		else:
-			# download new image
-			if(len(self.p_list)==0):
-				print("All photos - mode")
-				self.button_image = resize_img(flickr.get_photo(flickr.get_random_photo_url(self.max_photo)))
-			else:
-				print("Album limited mode")
-				r = random.randrange(0,len(self.p_list))
-				print("selected photo "+str(r)+"/"+str(len(self.p_list)))
-				self.button_image = resize_img(flickr.get_photo(self.p_list[r]))
-			
-			
+			print("[GUI] Loading Splash ...")
+			recall_time=settings.time_splash
+
+		self.button_image = resize_img(flickr.get_photo(splash=splash))
 		self.button_image_photo = ImageTk.PhotoImage(self.button_image)
 		# set it
 		self.button.configure(image = self.button_image_photo, text = "")
