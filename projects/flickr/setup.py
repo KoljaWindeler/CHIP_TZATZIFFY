@@ -118,7 +118,7 @@ with open(filename, 'w') as out:
 	out.write("user_id=\""+settings.user_id+"\"\n")
 	out.write("photoset_id=\""+settings.photoset_id+"\"\n")
 	out.write("temp_path=tempfile.mktemp()\n")
-	out.write("searchtag='"+settings.searchtag+"'\n")
+	out.write("searchtag=\""+settings.searchtag+"\"\n")
 	out.write("time_regular_update = 5*60*1000\n")
 	out.write("time_splash = 1000\n")
 	out.write("time_total_refresh = 6*60*60*1000\n")
