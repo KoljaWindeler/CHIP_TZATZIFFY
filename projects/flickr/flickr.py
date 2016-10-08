@@ -81,6 +81,7 @@ def get_photo(p=0,splash=0):
 	return download_photo(url)
 ########################################################################################
 def get_api_sig_link(link):
+	link=link.replace(" ","")
 	arg=link.split("?")
 	arg=arg[1].split("&")
 	arg.sort()
@@ -89,7 +90,9 @@ def get_api_sig_link(link):
 		sin_arg=arg[i].split("=")
 		signature+=sin_arg[0]
 		signature+=sin_arg[1]
+	#print(signature)
 	url=link+"&api_sig="+hashlib.md5(signature.encode()).hexdigest()
+	#print(url)
 	return url
 ########################################################################################
 def get_page(url):
@@ -172,7 +175,7 @@ def get_random_public_photo_for_tag(tag,max_photo_count):
 		
 		print("[flickr] total "+str(max_photo_count)+" photos for the searchtag '"+str(tag)+"', select page "+str(page)+" and request "+str(per_page)+" photos on that page")
 		
-		url="https://api.flickr.com/services/rest/?method=flickr.photos.search&sort=date-posted-desc&api_key="+settings.api_key
+		url="https://api.flickr.com/services/rest/?method=flickr.photos.search&sort=relevance&api_key="+settings.api_key
 		url+="&per_page="+str(per_page)+"&page="+str(page)+"&format=json&nojsoncallback=1&text="+tag
 		#print(url)
 		d_page = get_page(get_api_sig_link(url))
@@ -184,9 +187,27 @@ def get_random_public_photo_for_tag(tag,max_photo_count):
 			print("[flickr] Request returned "+str(len(dec['photos']['photo']))+" photos, randomly select Nr "+str(photo_rand))
 		else:
 			photo_rand=0
+		
+		#debug: why did this photo show up?
+		#print_photo_info(dec['photos']['photo'][photo_rand]['id'],dec['photos']['photo'][photo_rand]['secret'])
+
+
 		url="https://farm"+str(dec['photos']['photo'][photo_rand]['farm'])+".staticflickr.com/"+str(dec['photos']['photo'][photo_rand]['server'])+"/"+str(dec['photos']['photo'][photo_rand]['id'])+"_"+str(dec['photos']['photo'][photo_rand]['secret'])+"_b.jpg"
 		#print(url)
 		return (url)
+########################################################################################
+def print_photo_info(id,secret):
+	print("[flickr] ====== FILE INFO ==========")
+	url="https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key="+settings.api_key
+	url+="&photo_id="+str(id)+"&secret="+str(secret)+"&format=json&nojsoncallback=1"
+	e_page=get_page(get_api_sig_link(url))
+	e_dec=json.loads(e_page)
+	print("[flickr] Tags: ",end="")
+	for tag in e_dec['photo']['tags']['tag']:
+		print(tag['raw'],end=", ")
+	print("")
+	print("[flickr] Title:"+str(e_dec['photo']['title']['_content']))
+	print("[flickr] ====== FILE INFO ==========")
 ########################################################################################
 def get_albums():
 	link="https://api.flickr.com/services/rest/?method=flickr.photosets.getList&api_key="+settings.api_key+"&user_id="+settings.user_id+"&format=json&nojsoncallback=1&auth_token="+settings.token
