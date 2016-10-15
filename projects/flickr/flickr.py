@@ -88,7 +88,9 @@ def get_photo(p=0,splash=0):
 			bad_img=test_broken_image(path) # returns 1 for bad image, 0 for good
 		# convert if requested
 		if(settings.convert_color==1):
-			img=Image.open(path).convert('LA').save(path,"PNG")
+			Image.open(path).convert('LA').save(path,"PNG")
+		elif(settings.convert_color==2):
+			convert2sepia(path)
 	return path
 ########################################################################################
 def get_api_sig_link(link):
@@ -261,5 +263,19 @@ def test_broken_image(path):
 	#else:
 		#print("different dimensions")
 	return 0
+########################################################################################
+def convert2sepia(path):
+	img = Image.open(path)
+	pix = img.load()
+	for x in range(0,img.size[0]):
+		for y in range(0,img.size[1]):
+			(r,g,b) = pix[x,y]
+			r2=min(255,int(r*0.393 + g*0.769 + b*0.189))
+			g2=min(255,int(r*0.349 + g*0.686 + b*0.168))
+			b2=min(255,int(r*0.272 + g*0.534 + b*0.131))
+			pix[x,y]=(r2,g2,b2)
+	img.save(path,"PNG")
+	print("[flickr] sepia conversion done")
+	return path
 ########################################################################################
 
