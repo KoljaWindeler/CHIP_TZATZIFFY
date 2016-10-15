@@ -10,6 +10,7 @@ import settings
 import threading
 import os
 import math
+from PIL import ImageTk, Image, ImageEnhance
 
 # list of the photos (required for album mode)
 photo_list=[]
@@ -61,24 +62,34 @@ def get_photo(p=0,splash=0):
 		if(p):
 			print("[flickr] loading Splash ...")
 		url = "file://"+os.path.dirname(os.path.realpath(__file__))+"/splash.png"
-	elif(settings.mode==1):
-		if(p):
-			print("[flickr] downloading a random private photo")
-		url=get_random_photo_url(photo_total)
-	elif(settings.mode==2):
-		if(p):
-			print("[flickr] downloading a private album photo")
-		r = random.randrange(0,len(photo_list))
-		if(p):
-			print("selected photo "+str(r)+"/"+str(len(photo_list)))
-		url=photo_list[r]
+		path=download_photo(url)
 	else:
-		if(p):
-			print("[flickr] downloading a public photo for "+str(settings.searchtag))
-		url=get_random_public_photo_for_tag(settings.searchtag,photo_total)
+		bad_img=1		# assume bad image
+		while(bad_img):		# loop this until its not longer a bad image
+			# select the mode, get the url
+			if(settings.mode==1):
+				if(p):
+					print("[flickr] downloading a random private photo")
+				url=get_random_photo_url(photo_total)
+			elif(settings.mode==2):
+				if(p):
+					print("[flickr] downloading a private album photo")
+				r = random.randrange(0,len(photo_list))
+				if(p):
+					print("selected photo "+str(r)+"/"+str(len(photo_list)))
+				url=photo_list[r]
+			else:
+				if(p):
+					print("[flickr] downloading a public photo for "+str(settings.searchtag))
+				url=get_random_public_photo_for_tag(settings.searchtag,photo_total)
 
-	# download photo and return file name
-	return download_photo(url)
+			# download photo and check if its a bad image (flickr: "this photo is not available")
+			path=download_photo(url)
+			bad_img=test_broken_image(path) # returns 1 for bad image, 0 for good
+		# convert if requested
+		if(settings.convert_color==1):
+			img=Image.open(path).convert('LA').save(path,"PNG")
+	return path
 ########################################################################################
 def get_api_sig_link(link):
 	link=link.replace(" ","")
@@ -223,4 +234,32 @@ def download_photo(url):
 		urllib.request.urlretrieve (url, settings.temp_path)
 		print("Done")
 		return settings.temp_path
+########################################################################################
+def test_broken_image(path):
+	bad_img = Image.open(os.path.join(os.path.dirname(os.path.realpath(__file__)),"broken_image.png"))
+	img = Image.open(path)
+	
+	if(img.size[0] == bad_img.size[0] and img.size[1] == bad_img.size[1]):
+		x_start=400
+		x_width=220	
+		y_start=350
+		y_height=120
+		pix_bad = bad_img.load()
+		pix = img.load()
+		differ=0
+		for x in range(x_start, x_start+x_width):
+			for y in range(y_start, y_start+y_height):
+				if(pix[x,y]!=pix_bad[x,y]):
+					differ+=1
+					#print("pixel "+str(x)+"/"+str(y)+" differ")
+					if(differ>10):
+						#print("more then 10 diff point, exit 0=different")
+						return 0
+		#print("finish 1 (the same)")
+		print("[flickr] Detected bad image, will skip to next")
+		return 1
+	#else:
+		#print("different dimensions")
+	return 0
+########################################################################################
 
