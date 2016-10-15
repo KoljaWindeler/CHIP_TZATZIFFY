@@ -1,2 +1,2 @@
 sudo apt update
-sudo apt install screen rtmpdump mplayer
+sudo apt install screen rtmpdump mplayer -y
