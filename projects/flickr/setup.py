@@ -4,7 +4,7 @@ import random
 import settings,sys,os
 
 ####################################################### api key #######################################################
-print("######################## 1/4 ########################")
+print("######################## 1/5 ########################")
 print("First you need a api key, get one at: https://www.flickr.com/services/apps/create/noncommercial/?")
 print("Please enter the displayed api key from the website ",end="")
 if(settings.api_key != ""):
@@ -27,7 +27,7 @@ if(settings.secret != "" and input==""):
 settings.secret=input
 
 ####################################################### mode? #######################################################
-print("######################## 2/4 ########################")
+print("######################## 2/5 ########################")
 print("Which mode would you like to run:")
 print("1) Show all of photos from your flickr account")
 print("2) Show only pictures from one album of your account")
@@ -61,9 +61,11 @@ if(settings.mode==3):
 		c=flickr.get_public_photo_count_for_tag(settings.searchtag)
 		if(c==0):
 			print("Flickr couldn't find pictures for '"+str(settings.searchtag)+"', please choose another term")
+		else:
+			print("Found "+str(c)+" pictures for the search term")
 ####################################################### token #######################################################
 if(settings.mode==1 or settings.mode==2):
-	print("######################## 3/4 ########################")
+	print("######################## 3/5 ########################")
 	if(settings.token != "" and settings.user_id != "" ):
 		print("You already have a flickr security token, do you want to keep it? [y]/n:")
 		mode=sys.stdin.readline().rstrip()
@@ -95,7 +97,7 @@ if(settings.mode==1 or settings.mode==2):
 		print("token generated")
 ####################################################### photoset #######################################################
 if(settings.mode==2):
-	print("######################## 3/4 ########################")
+	print("######################## 3/5 ########################")
 	print("loading all albums from your account")
 	album=flickr.get_albums()
 	photo_id=-1
@@ -108,6 +110,25 @@ if(settings.mode==2):
 	settings.photoset_id=album['photosets']['photoset'][photo_id]['id']
 	print("choose album ",end="")
 	print(album['photosets']['photoset'][photo_id]['title']['_content'])
+####################################################### convert to b/w #######################################################
+print("######################## 4/5 ########################")
+input=-1
+while(not(input in [0,1])):
+	print("Do you want to convert to grayscale (n/y)",end="")
+	if(str(settings.convert_color) == "1"):
+		print("[Y]:")
+	elif(str(settings.convert_color) == "0"):
+		print("[N]:")
+	else:
+		print(":")
+	input=sys.stdin.readline().rstrip()
+	if(input==""):
+		input=settings.convert_color
+	elif(input.lower()=="y"):
+		input=1
+	elif(input.lower()=="n"):
+		input=0
+	settings.convert_color=input
 ####################################################### write settings #######################################################
 filename=os.path.dirname(os.path.realpath(__file__))+"/settings.py"
 with open(filename, 'w') as out:
@@ -123,7 +144,8 @@ with open(filename, 'w') as out:
 	out.write("time_splash = 1000\n")
 	out.write("time_total_refresh = 6*60*60*1000\n")
 	out.write("mode="+str(settings.mode)+"\n")
+	out.write("convert_color="+str(settings.convert_color)+"\n")
 
-print("######################## 4/4 ########################")
+print("######################## 4/5 ########################")
 print("written settings file")
 print("run './start.sh' or 'python3 "+os.path.dirname(os.path.realpath(__file__))+"/main.py'")
