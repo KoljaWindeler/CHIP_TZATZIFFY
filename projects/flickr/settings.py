@@ -10,3 +10,4 @@ time_regular_update = 5*60*1000
 time_splash = 1000
 time_total_refresh = 6*60*60*1000
 mode=3
+convert_color=1
