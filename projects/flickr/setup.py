@@ -113,21 +113,25 @@ if(settings.mode==2):
 ####################################################### convert to b/w #######################################################
 print("######################## 4/5 ########################")
 input=-1
-while(not(input in [0,1])):
-	print("Do you want to convert to grayscale (n/y)",end="")
-	if(str(settings.convert_color) == "1"):
-		print("[Y]:")
+while(not(input in [0,1,2])):
+	print("Do you want to convert to grayscale / sepia (o = original / g = grayscale / s = sepia)",end="")
+	if(str(settings.convert_color) == "2"):
+		print("[S]:")
+	elif(str(settings.convert_color) == "1"):
+		print("[G]:")
 	elif(str(settings.convert_color) == "0"):
-		print("[N]:")
+		print("[O]:")
 	else:
 		print(":")
 	input=sys.stdin.readline().rstrip()
 	if(input==""):
 		input=settings.convert_color
-	elif(input.lower()=="y"):
-		input=1
-	elif(input.lower()=="n"):
+	elif(input.lower()=="o"):
 		input=0
+	elif(input.lower()=="g"):
+		input=1
+	elif(input.lower()=="s"):
+		input=2
 	settings.convert_color=input
 ####################################################### write settings #######################################################
 filename=os.path.dirname(os.path.realpath(__file__))+"/settings.py"
