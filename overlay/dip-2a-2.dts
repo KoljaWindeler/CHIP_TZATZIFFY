@@ -1,7 +1,13 @@
 /*
  * Copyright 2016 
- *
  * Kolja Windeler <kolja.windeler@gmail.com>
+ *
+ * This file is widly based on the pocket chip overlay from
+ * Maxime Ripard <maxime.ripard@free-electrons.com>
+ * Copyright 2016 Free Electrons
+ * Copyright 2016 NextThing Co
+ * https://github.com/NextThingCo/CHIP-dt-overlays/blob/master/nextthingco/dip-pocket-v73.dts
+ *
  *
  * This file is dual-licensed: you can use it either under the terms
  * of the GPL or the X11 license, at your option. Note that this dual
