@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.7.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -292,26 +292,6 @@ by exp-lbrs.ulp</description>
 <description>Generated from &lt;b&gt;Keyboard v0.2.sch&lt;/b&gt;&lt;p&gt;
 by exp-lbrs.ulp</description>
 <packages>
-<package name="TSOC6">
-<description>&lt;b&gt;TSOC 6&lt;/b&gt;</description>
-<circle x="-2.413" y="-2.286" radius="0.254" width="0.1524" layer="21"/>
-<wire x1="1.8542" y1="1.8034" x2="1.8542" y2="-1.8034" width="0.254" layer="21"/>
-<wire x1="-1.8542" y1="-1.8034" x2="-1.8542" y2="1.8034" width="0.254" layer="21"/>
-<rectangle x1="-1.3716" y1="-2.0828" x2="-1.1684" y2="-1.0668" layer="51"/>
-<rectangle x1="-0.1016" y1="-2.0828" x2="0.1016" y2="-1.0668" layer="51"/>
-<rectangle x1="1.1684" y1="-2.0828" x2="1.3716" y2="-1.0668" layer="51"/>
-<rectangle x1="1.1684" y1="1.0668" x2="1.3716" y2="2.0828" layer="51"/>
-<rectangle x1="-0.1016" y1="1.0668" x2="0.1016" y2="2.0828" layer="51"/>
-<rectangle x1="-1.3716" y1="1.0668" x2="-1.1684" y2="2.0828" layer="51"/>
-<smd name="1" x="-1.27" y="-1.6002" dx="0.53" dy="1.33" layer="1"/>
-<smd name="2" x="0" y="-1.6002" dx="0.53" dy="1.33" layer="1"/>
-<smd name="3" x="1.27" y="-1.6002" dx="0.53" dy="1.33" layer="1"/>
-<smd name="4" x="1.27" y="1.6002" dx="0.53" dy="1.33" layer="1"/>
-<smd name="5" x="0" y="1.6002" dx="0.53" dy="1.33" layer="1"/>
-<smd name="6" x="-1.27" y="1.6002" dx="0.53" dy="1.33" layer="1"/>
-<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector">&gt;NAME</text>
-<text x="-2.54" y="-3.81" size="1.27" layer="27" font="vector">&gt;VALUE</text>
-</package>
 <package name="DO-214AC">
 <description>&lt;b&gt;DIODE&lt;/b&gt;</description>
 <wire x1="-2.3" y1="1" x2="2.3" y2="1" width="0.254" layer="51"/>
@@ -551,20 +531,6 @@ Source: &lt;a href= "http://www.hirose.co.jp/cataloge_hp/e58605370.pdf"&gt;Data 
 </package>
 </packages>
 <symbols>
-<symbol name="DS2431">
-<wire x1="5.08" y1="7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="5.08" y1="-7.62" x2="-7.62" y2="-7.62" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="-7.62" x2="-7.62" y2="7.62" width="0.254" layer="94"/>
-<wire x1="-7.62" y1="7.62" x2="5.08" y2="7.62" width="0.254" layer="94"/>
-<pin name="GND" x="-2.54" y="-12.7" length="middle" rot="R90"/>
-<pin name="IO" x="10.16" y="2.54" length="middle" rot="R180"/>
-<pin name="NC@1" x="-5.08" y="7.62" length="point" rot="R90"/>
-<pin name="NC@2" x="-2.54" y="7.62" length="point" rot="R90"/>
-<pin name="NC@3" x="0" y="7.62" length="point" rot="R90"/>
-<pin name="NC@4" x="2.54" y="7.62" length="point" rot="R90"/>
-<text x="2.54" y="-12.7" size="1.778" layer="95">&gt;NAME</text>
-<text x="2.54" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
-</symbol>
 <symbol name="DIODE_SCHOTKY">
 <wire x1="-1.27" y1="1.905" x2="1.27" y2="0" width="0.254" layer="94"/>
 <wire x1="1.27" y1="0" x2="-1.27" y2="-1.905" width="0.254" layer="94"/>
@@ -611,42 +577,6 @@ Source: &lt;a href= "http://www.hirose.co.jp/cataloge_hp/e58605370.pdf"&gt;Data 
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="DS2431" prefix="U">
-<description>&lt;h2&gt;1024-Bit EEPROM&lt;/h2&gt;
-&lt;p&gt;This chip provides a 4x256 Bit EEPROM, which can be programmed@5V. Write protection and OTP emulation are available, too.&lt;/p&gt;
-&lt;h3&gt;Author:&lt;/h3&gt;
-Jan Kandziora &amp;lt;jjj@gmx.de&amp;gt;</description>
-<gates>
-<gate name="G$1" symbol="DS2431" x="2.54" y="0"/>
-</gates>
-<devices>
-<device name="P" package="TSOC6">
-<connects>
-<connect gate="G$1" pin="GND" pad="1"/>
-<connect gate="G$1" pin="IO" pad="2"/>
-<connect gate="G$1" pin="NC@1" pad="3"/>
-<connect gate="G$1" pin="NC@2" pad="4"/>
-<connect gate="G$1" pin="NC@3" pad="5"/>
-<connect gate="G$1" pin="NC@4" pad="6"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="ASSEMBLE" value="" constant="no"/>
-<attribute name="DESCRIPTION" value="IC, 1024-Bit, 1-Wire EEPROM, TSOC6" constant="no"/>
-<attribute name="FOOTPRINT" value="TSOC6" constant="no"/>
-<attribute name="LINK" value="http://www.digikey.com/product-detail/en/DS2431P%2BT%26R/DS2431P%2BT%26RCT-ND/3647900" constant="no"/>
-<attribute name="MFG" value="DIGIKEY" constant="no"/>
-<attribute name="MFG_PN" value="DS2431P+T&amp;RCT-ND" constant="no"/>
-<attribute name="PART_TYPE" value="IC" constant="no"/>
-<attribute name="PRICE" value="0.98" constant="no"/>
-<attribute name="TOLLERANCE" value="" constant="no"/>
-<attribute name="VENDOR" value="MAXIM" constant="no"/>
-<attribute name="VENDOR_PART_NUMBER" value="DS2431P+T&amp;R" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="DIODE_SCHTKY_B240" prefix="D">
 <gates>
 <gate name="G$1" symbol="DIODE_SCHOTKY" x="0" y="0"/>
@@ -4181,173 +4111,6 @@ Alibaba  http://s.aliexpress.com/aUbUrErA</description>
 <rectangle x1="4.1375" y1="9.9875" x2="5.9125" y2="10.0125" layer="25"/>
 <rectangle x1="4.3125" y1="10.0125" x2="5.7375" y2="10.0375" layer="25"/>
 <rectangle x1="4.5125" y1="10.0375" x2="5.5375" y2="10.0625" layer="25"/>
-</package>
-<package name="2X20CHIP_OFFSET-TH_0.9">
-<description>0.1mm off</description>
-<circle x="-20.32" y="-1.27" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="1.27" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="3.81" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="6.35" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="8.89" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="11.43" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="13.97" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="16.51" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="19.05" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="21.59" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="24.13" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="24.13" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="21.59" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="19.05" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="16.51" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="13.97" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="11.43" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="8.89" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="6.35" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="3.81" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="1.27" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-1.27" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-3.81" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-3.81" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-6.35" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-6.35" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-8.89" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-8.89" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-11.43" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-11.43" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-13.97" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-13.97" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-16.51" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-16.51" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-19.05" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-19.05" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-21.59" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.32" y="-24.13" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-24.13" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.78" y="-21.59" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-1.27" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="1.27" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="3.81" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="6.35" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="8.89" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="11.43" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="13.97" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="16.51" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="19.05" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="21.59" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="24.13" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="24.13" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="21.59" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="19.05" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="16.51" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="13.97" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="11.43" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="8.89" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="6.35" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="3.81" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="1.27" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-1.27" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-3.81" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-3.81" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-6.35" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-6.35" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-8.89" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-8.89" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-11.43" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-11.43" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-13.97" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-13.97" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-16.51" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-16.51" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-19.05" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-19.05" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-21.59" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.24" y="-24.13" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-24.13" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.78" y="-21.59" radius="0.2" width="0.3" layer="51"/>
-<wire x1="19.23" y1="25" x2="19.23" y2="-25" width="0.127" layer="20"/>
-<wire x1="19.23" y1="-25" x2="-21.77" y2="-25" width="0.127" layer="20"/>
-<wire x1="-21.77" y1="-25" x2="-21.77" y2="25" width="0.127" layer="20"/>
-<wire x1="-21.77" y1="25" x2="19.23" y2="25" width="0.127" layer="20"/>
-<pad name="AP-EINT1" x="15.113" y="-3.81" drill="0.9" rot="R270"/>
-<pad name="AP-EINT3" x="17.907" y="-3.81" drill="0.9" rot="R270"/>
-<pad name="BAT" x="-17.907" y="16.51" drill="0.9" rot="R270"/>
-<pad name="CHG-IN" x="-17.653" y="24.13" drill="0.9" rot="R270"/>
-<pad name="CSICK" x="17.907" y="-8.89" drill="0.9" rot="R270"/>
-<pad name="CSID0" x="15.113" y="-13.97" drill="0.9" rot="R270"/>
-<pad name="CSID1" x="17.907" y="-13.97" drill="0.9" rot="R270"/>
-<pad name="CSID2" x="15.367" y="-16.51" drill="0.9" rot="R270"/>
-<pad name="CSID3" x="17.653" y="-16.51" drill="0.9" rot="R270"/>
-<pad name="CSID4" x="15.113" y="-19.05" drill="0.9" rot="R270"/>
-<pad name="CSID5" x="17.907" y="-19.05" drill="0.9" rot="R270"/>
-<pad name="CSID6" x="15.367" y="-21.59" drill="0.9" rot="R270"/>
-<pad name="CSID7" x="17.653" y="-21.59" drill="0.9" rot="R270"/>
-<pad name="CSIHSYNC" x="15.367" y="-11.43" drill="0.9" rot="R270"/>
-<pad name="CSIPCK" x="15.113" y="-8.89" drill="0.9" rot="R270"/>
-<pad name="CSIVSYNC" x="17.653" y="-11.43" drill="0.9" rot="R270"/>
-<pad name="FEL" x="15.113" y="16.51" drill="0.9" rot="R270"/>
-<pad name="GND@1" x="-17.907" y="11.43" drill="0.9" rot="R270"/>
-<pad name="GND@2" x="-20.193" y="-24.13" drill="0.9" rot="R270"/>
-<pad name="GND@3" x="-20.447" y="24.13" drill="0.9" shape="square" rot="R270"/>
-<pad name="GND@4" x="17.653" y="-1.27" drill="0.9" rot="R270"/>
-<pad name="GND@5" x="17.907" y="-24.13" drill="0.9" rot="R270"/>
-<pad name="GND@6" x="15.113" y="-24.13" drill="0.9" rot="R270"/>
-<pad name="GND@7" x="15.367" y="-1.27" drill="0.9" rot="R270"/>
-<pad name="GND@8" x="15.367" y="24.13" drill="0.9" shape="square" rot="R270"/>
-<pad name="GND@10" x="-17.907" y="21.59" drill="0.9" rot="R270"/>
-<pad name="HPCOM" x="17.653" y="19.05" drill="0.9" rot="R270"/>
-<pad name="HPL" x="17.907" y="21.59" drill="0.9" rot="R270"/>
-<pad name="HPR" x="17.907" y="16.51" drill="0.9" rot="R270"/>
-<pad name="LCD-CLK" x="-20.193" y="-19.05" drill="0.9" rot="R270"/>
-<pad name="LCD-D2" x="-20.447" y="3.81" drill="0.9" rot="R270"/>
-<pad name="LCD-D3" x="-17.907" y="1.27" drill="0.9" rot="R270"/>
-<pad name="LCD-D4" x="-20.193" y="1.27" drill="0.9" rot="R270"/>
-<pad name="LCD-D5" x="-17.653" y="-1.27" drill="0.9" rot="R270"/>
-<pad name="LCD-D6" x="-20.447" y="-1.27" drill="0.9" rot="R270"/>
-<pad name="LCD-D7" x="-17.907" y="-3.81" drill="0.9" rot="R270"/>
-<pad name="LCD-D10" x="-20.193" y="-3.81" drill="0.9" rot="R270"/>
-<pad name="LCD-D11" x="-17.653" y="-6.35" drill="0.9" rot="R270"/>
-<pad name="LCD-D12" x="-20.447" y="-6.35" drill="0.9" rot="R270"/>
-<pad name="LCD-D13" x="-17.907" y="-8.89" drill="0.9" rot="R270"/>
-<pad name="LCD-D14" x="-20.193" y="-8.89" drill="0.9" rot="R270"/>
-<pad name="LCD-D15" x="-17.653" y="-11.43" drill="0.9" rot="R270"/>
-<pad name="LCD-D18" x="-20.447" y="-11.43" drill="0.9" rot="R270"/>
-<pad name="LCD-D19" x="-17.907" y="-13.97" drill="0.9" rot="R270"/>
-<pad name="LCD-D20" x="-20.193" y="-13.97" drill="0.9" rot="R270"/>
-<pad name="LCD-D21" x="-17.653" y="-16.51" drill="0.9" rot="R270"/>
-<pad name="LCD-D22" x="-20.447" y="-16.51" drill="0.9" rot="R270"/>
-<pad name="LCD-D23" x="-17.907" y="-19.05" drill="0.9" rot="R270"/>
-<pad name="LCD-DE" x="-17.907" y="-24.13" drill="0.9" rot="R270"/>
-<pad name="LCD-HSYNC" x="-17.653" y="-21.59" drill="0.9" rot="R270"/>
-<pad name="LCD-VSYNC" x="-20.447" y="-21.59" drill="0.9" rot="R270"/>
-<pad name="LRADC" x="15.113" y="11.43" drill="0.9" rot="R270"/>
-<pad name="MICIN1" x="17.907" y="11.43" drill="0.9" rot="R270"/>
-<pad name="MICM" x="17.653" y="13.97" drill="0.9" rot="R270"/>
-<pad name="PWM0" x="-17.653" y="3.81" drill="0.9" rot="R270"/>
-<pad name="PWRON" x="-17.653" y="13.97" drill="0.9" rot="R270"/>
-<pad name="TS" x="-17.653" y="19.05" drill="0.9" rot="R270"/>
-<pad name="TWI1-SCK" x="-20.193" y="11.43" drill="0.9" rot="R270"/>
-<pad name="TWI1-SDA" x="-20.447" y="13.97" drill="0.9" rot="R270"/>
-<pad name="TWI2-SCK" x="17.653" y="-6.35" drill="0.9" rot="R270"/>
-<pad name="TWI2-SDA" x="15.367" y="-6.35" drill="0.9" rot="R270"/>
-<pad name="UART1-RX" x="15.367" y="19.05" drill="0.9" rot="R270"/>
-<pad name="UART1-TX" x="15.113" y="21.59" drill="0.9" rot="R270"/>
-<pad name="VCC1V8" x="-20.193" y="16.51" drill="0.9" rot="R270"/>
-<pad name="VCC3V3" x="-20.447" y="19.05" drill="0.9" rot="R270"/>
-<pad name="VCC3V3@1" x="15.367" y="13.97" drill="0.9" rot="R270"/>
-<pad name="VCC5V@0" x="-20.193" y="21.59" drill="0.9" rot="R270"/>
-<pad name="VCC5V@1" x="17.653" y="24.13" drill="0.9" rot="R270"/>
-<pad name="X1" x="-20.447" y="8.89" drill="0.9" rot="R270"/>
-<pad name="X2" x="-17.653" y="8.89" drill="0.9" rot="R270"/>
-<pad name="XIO-P0" x="15.367" y="8.89" drill="0.9" rot="R270"/>
-<pad name="XIO-P1" x="17.653" y="8.89" drill="0.9" rot="R270"/>
-<pad name="XIO-P2" x="15.113" y="6.35" drill="0.9" rot="R270"/>
-<pad name="XIO-P3" x="17.907" y="6.35" drill="0.9" rot="R270"/>
-<pad name="XIO-P4" x="15.367" y="3.81" drill="0.9" rot="R270"/>
-<pad name="XIO-P5" x="17.653" y="3.81" drill="0.9" rot="R270"/>
-<pad name="XIO-P6" x="15.113" y="1.27" drill="0.9" rot="R270"/>
-<pad name="XIO-P7" x="17.907" y="1.27" drill="0.9" rot="R270"/>
-<pad name="Y1" x="-20.193" y="6.35" drill="0.9" rot="R270"/>
-<pad name="Y2" x="-17.907" y="6.35" drill="0.9" rot="R270"/>
 </package>
 <package name="2X20CHIP_OFFSET-TH_0.8">
 <circle x="-20.32" y="-1.27" radius="0.2" width="0.3" layer="51"/>
@@ -19015,172 +18778,6 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 <rectangle x1="5.195" y1="5.865" x2="5.225" y2="5.875" layer="25"/>
 <rectangle x1="5.205" y1="5.875" x2="5.235" y2="5.885" layer="25"/>
 </package>
-<package name="2X20CHIP_NOOFFSET-TH_0.7">
-<circle x="-20.34" y="-1.21" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="1.33" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="3.87" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="6.41" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="8.95" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="11.49" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="14.03" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="16.57" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="19.11" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="21.65" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="24.19" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="24.19" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="21.65" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="19.11" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="16.57" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="14.03" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="11.49" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="8.95" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="6.41" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="3.87" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="1.33" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-1.21" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-3.75" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-3.75" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-6.29" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-6.29" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-8.83" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-8.83" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-11.37" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-11.37" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-13.91" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-13.91" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-16.45" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-16.45" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-18.99" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-18.99" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-21.53" radius="0.2" width="0.3" layer="51"/>
-<circle x="-20.34" y="-24.07" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-24.07" radius="0.2" width="0.3" layer="51"/>
-<circle x="-17.8" y="-21.53" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-1.21" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="1.33" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="3.87" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="6.41" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="8.95" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="11.49" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="14.03" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="16.57" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="19.11" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="21.65" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="24.19" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="24.19" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="21.65" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="19.11" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="16.57" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="14.03" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="11.49" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="8.95" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="6.41" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="3.87" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="1.33" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-1.21" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-3.75" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-3.75" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-6.29" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-6.29" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-8.83" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-8.83" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-11.37" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-11.37" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-13.91" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-13.91" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-16.45" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-16.45" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-18.99" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-18.99" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-21.53" radius="0.2" width="0.3" layer="51"/>
-<circle x="15.22" y="-24.07" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-24.07" radius="0.2" width="0.3" layer="51"/>
-<circle x="17.76" y="-21.53" radius="0.2" width="0.3" layer="51"/>
-<wire x1="-21.59" y1="-25" x2="-21.59" y2="25" width="0.127" layer="49"/>
-<wire x1="19.41" y1="-25" x2="-21.59" y2="-25" width="0.127" layer="49"/>
-<wire x1="19.41" y1="-25" x2="19.41" y2="25" width="0.127" layer="49"/>
-<wire x1="-21.59" y1="25" x2="19.41" y2="25" width="0.127" layer="21"/>
-<pad name="AP-EINT1" x="15.22" y="-3.75" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="AP-EINT3" x="17.76" y="-3.75" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="BAT" x="-17.8" y="16.57" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CHG-IN" x="-17.8" y="24.19" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSICK" x="17.76" y="-8.83" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSID0" x="15.22" y="-13.91" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSID1" x="17.76" y="-13.91" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSID2" x="15.22" y="-16.45" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSID3" x="17.76" y="-16.45" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSID4" x="15.22" y="-18.99" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSID5" x="17.76" y="-18.99" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSID6" x="15.22" y="-21.53" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSID7" x="17.76" y="-21.53" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSIHSYNC" x="15.22" y="-11.37" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSIPCK" x="15.22" y="-8.83" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="CSIVSYNC" x="17.76" y="-11.37" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="FEL" x="15.22" y="16.57" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="GND@1" x="-17.8" y="11.49" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="GND@2" x="-20.34" y="-24.07" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="GND@3" x="-20.34" y="24.19" drill="0.7" diameter="1.27" shape="square" rot="R270"/>
-<pad name="GND@4" x="17.76" y="-1.21" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="GND@5" x="17.76" y="-24.07" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="GND@6" x="15.22" y="-24.07" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="GND@7" x="15.22" y="-1.21" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="GND@8" x="15.22" y="24.19" drill="0.7" diameter="1.27" shape="square" rot="R270"/>
-<pad name="GND@10" x="-17.8" y="21.65" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="HPCOM" x="17.76" y="19.11" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="HPL" x="17.76" y="21.65" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="HPR" x="17.76" y="16.57" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-CLK" x="-20.34" y="-18.99" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D2" x="-20.34" y="3.87" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D3" x="-17.8" y="1.33" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D4" x="-20.34" y="1.33" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D5" x="-17.8" y="-1.21" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D6" x="-20.34" y="-1.21" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D7" x="-17.8" y="-3.75" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D10" x="-20.34" y="-3.75" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D11" x="-17.8" y="-6.29" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D12" x="-20.34" y="-6.29" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D13" x="-17.8" y="-8.83" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D14" x="-20.34" y="-8.83" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D15" x="-17.8" y="-11.37" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D18" x="-20.34" y="-11.37" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D19" x="-17.8" y="-13.91" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D20" x="-20.34" y="-13.91" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D21" x="-17.8" y="-16.45" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D22" x="-20.34" y="-16.45" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-D23" x="-17.8" y="-18.99" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-DE" x="-17.8" y="-24.07" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-HSYNC" x="-17.8" y="-21.53" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LCD-VSYNC" x="-20.34" y="-21.53" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="LRADC" x="15.22" y="11.49" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="MICIN1" x="17.76" y="11.49" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="MICM" x="17.76" y="14.03" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="PWM0" x="-17.8" y="3.87" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="PWRON" x="-17.8" y="14.03" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="TS" x="-17.8" y="19.11" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="TWI1-SCK" x="-20.34" y="11.49" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="TWI1-SDA" x="-20.34" y="14.03" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="TWI2-SCK" x="17.76" y="-6.29" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="TWI2-SDA" x="15.22" y="-6.29" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="UART1-RX" x="15.22" y="19.11" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="UART1-TX" x="15.22" y="21.65" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="VCC1V8" x="-20.34" y="16.57" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="VCC3V3" x="-20.34" y="19.11" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="VCC3V3@1" x="15.22" y="14.03" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="VCC5V@0" x="-20.34" y="21.65" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="VCC5V@1" x="17.76" y="24.19" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="X1" x="-20.34" y="8.95" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="X2" x="-17.8" y="8.95" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="XIO-P0" x="15.22" y="8.95" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="XIO-P1" x="17.76" y="8.95" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="XIO-P2" x="15.22" y="6.41" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="XIO-P3" x="17.76" y="6.41" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="XIO-P4" x="15.22" y="3.87" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="XIO-P5" x="17.76" y="3.87" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="XIO-P6" x="15.22" y="1.33" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="XIO-P7" x="17.76" y="1.33" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="Y1" x="-20.34" y="6.41" drill="0.7" diameter="1.27" rot="R270"/>
-<pad name="Y2" x="-17.8" y="6.41" drill="0.7" diameter="1.27" rot="R270"/>
-</package>
 <package name="MP1584EN_FRAMELESS">
 <pad name="VIN" x="1.778" y="1.778" drill="0.8" shape="long"/>
 <pad name="GNDIN" x="1.778" y="14.986" drill="0.8" shape="long"/>
@@ -19492,6 +19089,495 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 <smd name="SHIELD2" x="0" y="-3.685" dx="1.8" dy="1.5" layer="1" rot="R90" stop="no" cream="no"/>
 <wire x1="-2" y1="7" x2="-2" y2="0" width="0" layer="51"/>
 </package>
+<package name="2X20CHIP_SINGLE_OFFSET-TH">
+<description>0.1mm off</description>
+<wire x1="19.23" y1="25" x2="19.23" y2="-25" width="0.127" layer="20"/>
+<wire x1="19.23" y1="-25" x2="-21.77" y2="-25" width="0.127" layer="20"/>
+<wire x1="-21.77" y1="-25" x2="-21.77" y2="25" width="0.127" layer="20"/>
+<wire x1="-21.77" y1="25" x2="19.23" y2="25" width="0.127" layer="20"/>
+<pad name="AP-EINT1" x="15.113" y="-3.81" drill="0.9" rot="R270"/>
+<pad name="AP-EINT3" x="17.907" y="-3.81" drill="0.9" rot="R270"/>
+<pad name="BAT" x="-17.907" y="16.51" drill="0.9" rot="R270"/>
+<pad name="CHG-IN" x="-17.653" y="24.13" drill="0.9" rot="R270"/>
+<pad name="CSICK" x="17.907" y="-8.89" drill="0.9" rot="R270"/>
+<pad name="CSID0" x="15.113" y="-13.97" drill="0.9" rot="R270"/>
+<pad name="CSID1" x="17.907" y="-13.97" drill="0.9" rot="R270"/>
+<pad name="CSID2" x="15.367" y="-16.51" drill="0.9" rot="R270"/>
+<pad name="CSID3" x="17.653" y="-16.51" drill="0.9" rot="R270"/>
+<pad name="CSID4" x="15.113" y="-19.05" drill="0.9" rot="R270"/>
+<pad name="CSID5" x="17.907" y="-19.05" drill="0.9" rot="R270"/>
+<pad name="CSID6" x="15.367" y="-21.59" drill="0.9" rot="R270"/>
+<pad name="CSID7" x="17.653" y="-21.59" drill="0.9" rot="R270"/>
+<pad name="CSIHSYNC" x="15.367" y="-11.43" drill="0.9" rot="R270"/>
+<pad name="CSIPCK" x="15.113" y="-8.89" drill="0.9" rot="R270"/>
+<pad name="CSIVSYNC" x="17.653" y="-11.43" drill="0.9" rot="R270"/>
+<pad name="FEL" x="15.113" y="16.51" drill="0.9" rot="R270"/>
+<pad name="GND@1" x="-17.907" y="11.43" drill="0.9" rot="R270"/>
+<pad name="GND@2" x="-20.193" y="-24.13" drill="0.9" rot="R270"/>
+<pad name="GND@3" x="-20.447" y="24.13" drill="0.9" shape="square" rot="R270"/>
+<pad name="GND@4" x="17.653" y="-1.27" drill="0.9" rot="R270"/>
+<pad name="GND@5" x="17.907" y="-24.13" drill="0.9" rot="R270"/>
+<pad name="GND@6" x="15.113" y="-24.13" drill="0.9" rot="R270"/>
+<pad name="GND@7" x="15.367" y="-1.27" drill="0.9" rot="R270"/>
+<pad name="GND@8" x="15.367" y="24.13" drill="0.9" shape="square" rot="R270"/>
+<pad name="GND@10" x="-17.907" y="21.59" drill="0.9" rot="R270"/>
+<pad name="HPCOM" x="17.653" y="19.05" drill="0.9" rot="R270"/>
+<pad name="HPL" x="17.907" y="21.59" drill="0.9" rot="R270"/>
+<pad name="HPR" x="17.907" y="16.51" drill="0.9" rot="R270"/>
+<pad name="LCD-CLK" x="-20.193" y="-19.05" drill="0.9" rot="R270"/>
+<pad name="LCD-D2" x="-20.447" y="3.81" drill="0.9" rot="R270"/>
+<pad name="LCD-D3" x="-17.907" y="1.27" drill="0.9" rot="R270"/>
+<pad name="LCD-D4" x="-20.193" y="1.27" drill="0.9" rot="R270"/>
+<pad name="LCD-D5" x="-17.653" y="-1.27" drill="0.9" rot="R270"/>
+<pad name="LCD-D6" x="-20.447" y="-1.27" drill="0.9" rot="R270"/>
+<pad name="LCD-D7" x="-17.907" y="-3.81" drill="0.9" rot="R270"/>
+<pad name="LCD-D10" x="-20.193" y="-3.81" drill="0.9" rot="R270"/>
+<pad name="LCD-D11" x="-17.653" y="-6.35" drill="0.9" rot="R270"/>
+<pad name="LCD-D12" x="-20.447" y="-6.35" drill="0.9" rot="R270"/>
+<pad name="LCD-D13" x="-17.907" y="-8.89" drill="0.9" rot="R270"/>
+<pad name="LCD-D14" x="-20.193" y="-8.89" drill="0.9" rot="R270"/>
+<pad name="LCD-D15" x="-17.653" y="-11.43" drill="0.9" rot="R270"/>
+<pad name="LCD-D18" x="-20.447" y="-11.43" drill="0.9" rot="R270"/>
+<pad name="LCD-D19" x="-17.907" y="-13.97" drill="0.9" rot="R270"/>
+<pad name="LCD-D20" x="-20.193" y="-13.97" drill="0.9" rot="R270"/>
+<pad name="LCD-D21" x="-17.653" y="-16.51" drill="0.9" rot="R270"/>
+<pad name="LCD-D22" x="-20.447" y="-16.51" drill="0.9" rot="R270"/>
+<pad name="LCD-D23" x="-17.907" y="-19.05" drill="0.9" rot="R270"/>
+<pad name="LCD-DE" x="-17.907" y="-24.13" drill="0.9" rot="R270"/>
+<pad name="LCD-HSYNC" x="-17.653" y="-21.59" drill="0.9" rot="R270"/>
+<pad name="LCD-VSYNC" x="-20.447" y="-21.59" drill="0.9" rot="R270"/>
+<pad name="LRADC" x="15.113" y="11.43" drill="0.9" rot="R270"/>
+<pad name="MICIN1" x="17.907" y="11.43" drill="0.9" rot="R270"/>
+<pad name="MICM" x="17.653" y="13.97" drill="0.9" rot="R270"/>
+<pad name="PWM0" x="-17.653" y="3.81" drill="0.9" rot="R270"/>
+<pad name="PWRON" x="-17.653" y="13.97" drill="0.9" rot="R270"/>
+<pad name="TS" x="-17.653" y="19.05" drill="0.9" rot="R270"/>
+<pad name="TWI1-SCK" x="-20.193" y="11.43" drill="0.9" rot="R270"/>
+<pad name="TWI1-SDA" x="-20.447" y="13.97" drill="0.9" rot="R270"/>
+<pad name="TWI2-SCK" x="17.653" y="-6.35" drill="0.9" rot="R270"/>
+<pad name="TWI2-SDA" x="15.367" y="-6.35" drill="0.9" rot="R270"/>
+<pad name="UART1-RX" x="15.367" y="19.05" drill="0.9" rot="R270"/>
+<pad name="UART1-TX" x="15.113" y="21.59" drill="0.9" rot="R270"/>
+<pad name="VCC1V8" x="-20.193" y="16.51" drill="0.9" rot="R270"/>
+<pad name="VCC3V3" x="-20.447" y="19.05" drill="0.9" rot="R270"/>
+<pad name="VCC3V3@1" x="15.367" y="13.97" drill="0.9" rot="R270"/>
+<pad name="VCC5V@0" x="-20.193" y="21.59" drill="0.9" rot="R270"/>
+<pad name="VCC5V@1" x="17.653" y="24.13" drill="0.9" rot="R270"/>
+<pad name="X1" x="-20.447" y="8.89" drill="0.9" rot="R270"/>
+<pad name="X2" x="-17.653" y="8.89" drill="0.9" rot="R270"/>
+<pad name="XIO-P0" x="15.367" y="8.89" drill="0.9" rot="R270"/>
+<pad name="XIO-P1" x="17.653" y="8.89" drill="0.9" rot="R270"/>
+<pad name="XIO-P2" x="15.113" y="6.35" drill="0.9" rot="R270"/>
+<pad name="XIO-P3" x="17.907" y="6.35" drill="0.9" rot="R270"/>
+<pad name="XIO-P4" x="15.367" y="3.81" drill="0.9" rot="R270"/>
+<pad name="XIO-P5" x="17.653" y="3.81" drill="0.9" rot="R270"/>
+<pad name="XIO-P6" x="15.113" y="1.27" drill="0.9" rot="R270"/>
+<pad name="XIO-P7" x="17.907" y="1.27" drill="0.9" rot="R270"/>
+<pad name="Y1" x="-20.193" y="6.35" drill="0.9" rot="R270"/>
+<pad name="Y2" x="-17.907" y="6.35" drill="0.9" rot="R270"/>
+<rectangle x1="-18.1" y1="6.03" x2="-17.46" y2="6.67" layer="220"/>
+<text x="-14.5" y="-21.6" size="1.27" layer="220">Tzatziki v7 - 0.9mm drill
+
+NTC: 35.56mm center to center
+
+Pin center = -19,05 +/- 2.54/2 = 
+-17,78 or -20,32
+
+Dill center off by -0,127mm per pin
+
+pin is 0.64mm square:
+(-18,1) - (-17,46)
+(-20,64) - (-20)</text>
+<rectangle x1="-18.1" y1="8.57" x2="-17.46" y2="9.21" layer="220"/>
+<rectangle x1="-20.64" y1="6.03" x2="-20" y2="6.67" layer="220"/>
+<rectangle x1="-20.64" y1="8.57" x2="-20" y2="9.21" layer="220"/>
+<rectangle x1="-18.1" y1="11.11" x2="-17.46" y2="11.75" layer="220"/>
+<rectangle x1="-18.1" y1="13.65" x2="-17.46" y2="14.29" layer="220"/>
+<rectangle x1="-20.64" y1="11.11" x2="-20" y2="11.75" layer="220"/>
+<rectangle x1="-20.64" y1="13.65" x2="-20" y2="14.29" layer="220"/>
+<rectangle x1="-18.1" y1="16.19" x2="-17.46" y2="16.83" layer="220"/>
+<rectangle x1="-18.1" y1="18.73" x2="-17.46" y2="19.37" layer="220"/>
+<rectangle x1="-20.64" y1="16.19" x2="-20" y2="16.83" layer="220"/>
+<rectangle x1="-20.64" y1="18.73" x2="-20" y2="19.37" layer="220"/>
+<rectangle x1="-18.1" y1="21.27" x2="-17.46" y2="21.91" layer="220"/>
+<rectangle x1="-18.1" y1="23.81" x2="-17.46" y2="24.45" layer="220"/>
+<rectangle x1="-20.64" y1="21.27" x2="-20" y2="21.91" layer="220"/>
+<rectangle x1="-20.64" y1="23.81" x2="-20" y2="24.45" layer="220"/>
+<rectangle x1="-18.1" y1="-14.29" x2="-17.46" y2="-13.65" layer="220"/>
+<rectangle x1="-18.1" y1="-11.75" x2="-17.46" y2="-11.11" layer="220"/>
+<rectangle x1="-20.64" y1="-14.29" x2="-20" y2="-13.65" layer="220"/>
+<rectangle x1="-20.64" y1="-11.75" x2="-20" y2="-11.11" layer="220"/>
+<rectangle x1="-18.1" y1="-9.21" x2="-17.46" y2="-8.57" layer="220"/>
+<rectangle x1="-18.1" y1="-6.67" x2="-17.46" y2="-6.03" layer="220"/>
+<rectangle x1="-20.64" y1="-9.21" x2="-20" y2="-8.57" layer="220"/>
+<rectangle x1="-20.64" y1="-6.67" x2="-20" y2="-6.03" layer="220"/>
+<rectangle x1="-18.1" y1="-4.13" x2="-17.46" y2="-3.49" layer="220"/>
+<rectangle x1="-18.1" y1="-1.59" x2="-17.46" y2="-0.95" layer="220"/>
+<rectangle x1="-20.64" y1="-4.13" x2="-20" y2="-3.49" layer="220"/>
+<rectangle x1="-20.64" y1="-1.59" x2="-20" y2="-0.95" layer="220"/>
+<rectangle x1="-18.1" y1="0.95" x2="-17.46" y2="1.59" layer="220"/>
+<rectangle x1="-18.1" y1="3.49" x2="-17.46" y2="4.13" layer="220"/>
+<rectangle x1="-20.64" y1="0.95" x2="-20" y2="1.59" layer="220"/>
+<rectangle x1="-20.64" y1="3.49" x2="-20" y2="4.13" layer="220"/>
+<rectangle x1="-18.1" y1="-24.45" x2="-17.46" y2="-23.81" layer="220"/>
+<rectangle x1="-18.1" y1="-21.91" x2="-17.46" y2="-21.27" layer="220"/>
+<rectangle x1="-20.64" y1="-24.45" x2="-20" y2="-23.81" layer="220"/>
+<rectangle x1="-20.64" y1="-21.91" x2="-20" y2="-21.27" layer="220"/>
+<rectangle x1="-18.1" y1="-19.37" x2="-17.46" y2="-18.73" layer="220"/>
+<rectangle x1="-18.1" y1="-16.83" x2="-17.46" y2="-16.19" layer="220"/>
+<rectangle x1="-20.64" y1="-19.37" x2="-20" y2="-18.73" layer="220"/>
+<rectangle x1="-20.64" y1="-16.83" x2="-20" y2="-16.19" layer="220"/>
+<rectangle x1="17.46" y1="6.03" x2="18.1" y2="6.67" layer="220"/>
+<rectangle x1="17.46" y1="8.57" x2="18.1" y2="9.21" layer="220"/>
+<rectangle x1="14.92" y1="6.03" x2="15.56" y2="6.67" layer="220"/>
+<rectangle x1="14.92" y1="8.57" x2="15.56" y2="9.21" layer="220"/>
+<rectangle x1="17.46" y1="11.11" x2="18.1" y2="11.75" layer="220"/>
+<rectangle x1="17.46" y1="13.65" x2="18.1" y2="14.29" layer="220"/>
+<rectangle x1="14.92" y1="11.11" x2="15.56" y2="11.75" layer="220"/>
+<rectangle x1="14.92" y1="13.65" x2="15.56" y2="14.29" layer="220"/>
+<rectangle x1="17.46" y1="16.19" x2="18.1" y2="16.83" layer="220"/>
+<rectangle x1="17.46" y1="18.73" x2="18.1" y2="19.37" layer="220"/>
+<rectangle x1="14.92" y1="16.19" x2="15.56" y2="16.83" layer="220"/>
+<rectangle x1="14.92" y1="18.73" x2="15.56" y2="19.37" layer="220"/>
+<rectangle x1="17.46" y1="21.27" x2="18.1" y2="21.91" layer="220"/>
+<rectangle x1="17.46" y1="23.81" x2="18.1" y2="24.45" layer="220"/>
+<rectangle x1="14.92" y1="21.27" x2="15.56" y2="21.91" layer="220"/>
+<rectangle x1="14.92" y1="23.81" x2="15.56" y2="24.45" layer="220"/>
+<rectangle x1="17.46" y1="-14.29" x2="18.1" y2="-13.65" layer="220"/>
+<rectangle x1="17.46" y1="-11.75" x2="18.1" y2="-11.11" layer="220"/>
+<rectangle x1="14.92" y1="-14.29" x2="15.56" y2="-13.65" layer="220"/>
+<rectangle x1="14.92" y1="-11.75" x2="15.56" y2="-11.11" layer="220"/>
+<rectangle x1="17.46" y1="-9.21" x2="18.1" y2="-8.57" layer="220"/>
+<rectangle x1="17.46" y1="-6.67" x2="18.1" y2="-6.03" layer="220"/>
+<rectangle x1="14.92" y1="-9.21" x2="15.56" y2="-8.57" layer="220"/>
+<rectangle x1="14.92" y1="-6.67" x2="15.56" y2="-6.03" layer="220"/>
+<rectangle x1="17.46" y1="-4.13" x2="18.1" y2="-3.49" layer="220"/>
+<rectangle x1="17.46" y1="-1.59" x2="18.1" y2="-0.95" layer="220"/>
+<rectangle x1="14.92" y1="-4.13" x2="15.56" y2="-3.49" layer="220"/>
+<rectangle x1="14.92" y1="-1.59" x2="15.56" y2="-0.95" layer="220"/>
+<rectangle x1="17.46" y1="0.95" x2="18.1" y2="1.59" layer="220"/>
+<rectangle x1="17.46" y1="3.49" x2="18.1" y2="4.13" layer="220"/>
+<rectangle x1="14.92" y1="0.95" x2="15.56" y2="1.59" layer="220"/>
+<rectangle x1="14.92" y1="3.49" x2="15.56" y2="4.13" layer="220"/>
+<rectangle x1="17.46" y1="-24.45" x2="18.1" y2="-23.81" layer="220"/>
+<rectangle x1="17.46" y1="-21.91" x2="18.1" y2="-21.27" layer="220"/>
+<rectangle x1="14.92" y1="-24.45" x2="15.56" y2="-23.81" layer="220"/>
+<rectangle x1="14.92" y1="-21.91" x2="15.56" y2="-21.27" layer="220"/>
+<rectangle x1="17.46" y1="-19.37" x2="18.1" y2="-18.73" layer="220"/>
+<rectangle x1="17.46" y1="-16.83" x2="18.1" y2="-16.19" layer="220"/>
+<rectangle x1="14.92" y1="-19.37" x2="15.56" y2="-18.73" layer="220"/>
+<rectangle x1="14.92" y1="-16.83" x2="15.56" y2="-16.19" layer="220"/>
+</package>
+<package name="2X20CHIP_BANK_OFFSET_TH_0.9">
+<wire x1="19.23" y1="25" x2="19.23" y2="-25" width="0.127" layer="20"/>
+<wire x1="19.23" y1="-25" x2="-21.77" y2="-25" width="0.127" layer="20"/>
+<wire x1="-21.77" y1="-25" x2="-21.77" y2="25" width="0.127" layer="20"/>
+<wire x1="-21.77" y1="25" x2="19.23" y2="25" width="0.127" layer="20"/>
+<pad name="AP-EINT1" x="15.14" y="-3.81" drill="0.9" rot="R270"/>
+<pad name="AP-EINT3" x="17.88" y="-3.81" drill="0.9" rot="R270"/>
+<pad name="BAT" x="-17.68" y="16.51" drill="0.9" rot="R270"/>
+<pad name="CHG-IN" x="-17.68" y="24.13" drill="0.9" rot="R270"/>
+<pad name="CSICK" x="17.88" y="-8.89" drill="0.9" rot="R270"/>
+<pad name="CSID0" x="15.14" y="-13.97" drill="0.9" rot="R270"/>
+<pad name="CSID1" x="17.88" y="-13.97" drill="0.9" rot="R270"/>
+<pad name="CSID2" x="15.14" y="-16.51" drill="0.9" rot="R270"/>
+<pad name="CSID3" x="17.88" y="-16.51" drill="0.9" rot="R270"/>
+<pad name="CSID4" x="15.14" y="-19.05" drill="0.9" rot="R270"/>
+<pad name="CSID5" x="17.88" y="-19.05" drill="0.9" rot="R270"/>
+<pad name="CSID6" x="15.14" y="-21.59" drill="0.9" rot="R270"/>
+<pad name="CSID7" x="17.88" y="-21.59" drill="0.9" rot="R270"/>
+<pad name="CSIHSYNC" x="15.14" y="-11.43" drill="0.9" rot="R270"/>
+<pad name="CSIPCK" x="15.14" y="-8.89" drill="0.9" rot="R270"/>
+<pad name="CSIVSYNC" x="17.88" y="-11.43" drill="0.9" rot="R270"/>
+<pad name="FEL" x="15.14" y="16.51" drill="0.9" rot="R270"/>
+<pad name="GND@1" x="-17.68" y="11.43" drill="0.9" rot="R270"/>
+<pad name="GND@2" x="-20.42" y="-24.13" drill="0.9" rot="R270"/>
+<pad name="GND@3" x="-20.42" y="24.13" drill="0.9" shape="square" rot="R270"/>
+<pad name="GND@4" x="17.88" y="-1.27" drill="0.9" rot="R270"/>
+<pad name="GND@5" x="17.88" y="-24.13" drill="0.9" rot="R270"/>
+<pad name="GND@6" x="15.14" y="-24.13" drill="0.9" rot="R270"/>
+<pad name="GND@7" x="15.14" y="-1.27" drill="0.9" rot="R270"/>
+<pad name="GND@8" x="15.14" y="24.13" drill="0.9" shape="square" rot="R270"/>
+<pad name="GND@10" x="-17.68" y="21.59" drill="0.9" rot="R270"/>
+<pad name="HPCOM" x="17.88" y="19.05" drill="0.9" rot="R270"/>
+<pad name="HPL" x="17.88" y="21.59" drill="0.9" rot="R270"/>
+<pad name="HPR" x="17.88" y="16.51" drill="0.9" rot="R270"/>
+<pad name="LCD-CLK" x="-20.42" y="-19.05" drill="0.9" rot="R270"/>
+<pad name="LCD-D2" x="-20.42" y="3.81" drill="0.9" rot="R270"/>
+<pad name="LCD-D3" x="-17.68" y="1.27" drill="0.9" rot="R270"/>
+<pad name="LCD-D4" x="-20.42" y="1.27" drill="0.9" rot="R270"/>
+<pad name="LCD-D5" x="-17.68" y="-1.27" drill="0.9" rot="R270"/>
+<pad name="LCD-D6" x="-20.42" y="-1.27" drill="0.9" rot="R270"/>
+<pad name="LCD-D7" x="-17.68" y="-3.81" drill="0.9" rot="R270"/>
+<pad name="LCD-D10" x="-20.42" y="-3.81" drill="0.9" rot="R270"/>
+<pad name="LCD-D11" x="-17.68" y="-6.35" drill="0.9" rot="R270"/>
+<pad name="LCD-D12" x="-20.447" y="-6.35" drill="0.9" rot="R270"/>
+<pad name="LCD-D13" x="-17.68" y="-8.89" drill="0.9" rot="R270"/>
+<pad name="LCD-D14" x="-20.42" y="-8.89" drill="0.9" rot="R270"/>
+<pad name="LCD-D15" x="-17.68" y="-11.43" drill="0.9" rot="R270"/>
+<pad name="LCD-D18" x="-20.42" y="-11.43" drill="0.9" rot="R270"/>
+<pad name="LCD-D19" x="-17.68" y="-13.97" drill="0.9" rot="R270"/>
+<pad name="LCD-D20" x="-20.42" y="-13.97" drill="0.9" rot="R270"/>
+<pad name="LCD-D21" x="-17.68" y="-16.51" drill="0.9" rot="R270"/>
+<pad name="LCD-D22" x="-20.42" y="-16.51" drill="0.9" rot="R270"/>
+<pad name="LCD-D23" x="-17.68" y="-19.05" drill="0.9" rot="R270"/>
+<pad name="LCD-DE" x="-17.68" y="-24.13" drill="0.9" rot="R270"/>
+<pad name="LCD-HSYNC" x="-17.68" y="-21.59" drill="0.9" rot="R270"/>
+<pad name="LCD-VSYNC" x="-20.42" y="-21.59" drill="0.9" rot="R270"/>
+<pad name="LRADC" x="15.14" y="11.43" drill="0.9" rot="R270"/>
+<pad name="MICIN1" x="17.88" y="11.43" drill="0.9" rot="R270"/>
+<pad name="MICM" x="17.88" y="13.97" drill="0.9" rot="R270"/>
+<pad name="PWM0" x="-17.68" y="3.81" drill="0.9" rot="R270"/>
+<pad name="PWRON" x="-17.68" y="13.97" drill="0.9" rot="R270"/>
+<pad name="TS" x="-17.68" y="19.05" drill="0.9" rot="R270"/>
+<pad name="TWI1-SCK" x="-20.42" y="11.43" drill="0.9" rot="R270"/>
+<pad name="TWI1-SDA" x="-20.42" y="13.97" drill="0.9" rot="R270"/>
+<pad name="TWI2-SCK" x="17.88" y="-6.35" drill="0.9" rot="R270"/>
+<pad name="TWI2-SDA" x="15.14" y="-6.35" drill="0.9" rot="R270"/>
+<pad name="UART1-RX" x="15.14" y="19.05" drill="0.9" rot="R270"/>
+<pad name="UART1-TX" x="15.14" y="21.59" drill="0.9" rot="R270"/>
+<pad name="VCC1V8" x="-20.42" y="16.51" drill="0.9" rot="R270"/>
+<pad name="VCC3V3" x="-20.42" y="19.05" drill="0.9" rot="R270"/>
+<pad name="VCC3V3@1" x="15.14" y="13.97" drill="0.9" rot="R270"/>
+<pad name="VCC5V@0" x="-20.42" y="21.59" drill="0.9" rot="R270"/>
+<pad name="VCC5V@1" x="17.88" y="24.13" drill="0.9" rot="R270"/>
+<pad name="X1" x="-20.42" y="8.89" drill="0.9" rot="R270"/>
+<pad name="X2" x="-17.68" y="8.89" drill="0.9" rot="R270"/>
+<pad name="XIO-P0" x="15.14" y="8.89" drill="0.9" rot="R270"/>
+<pad name="XIO-P1" x="17.88" y="8.89" drill="0.9" rot="R270"/>
+<pad name="XIO-P2" x="15.14" y="6.35" drill="0.9" rot="R270"/>
+<pad name="XIO-P3" x="17.88" y="6.35" drill="0.9" rot="R270"/>
+<pad name="XIO-P4" x="15.14" y="3.81" drill="0.9" rot="R270"/>
+<pad name="XIO-P5" x="17.88" y="3.81" drill="0.9" rot="R270"/>
+<pad name="XIO-P6" x="15.14" y="1.27" drill="0.9" rot="R270"/>
+<pad name="XIO-P7" x="17.88" y="1.27" drill="0.9" rot="R270"/>
+<pad name="Y1" x="-20.42" y="6.35" drill="0.9" rot="R270"/>
+<pad name="Y2" x="-17.68" y="6.35" drill="0.9" rot="R270"/>
+<rectangle x1="-18.1" y1="6.03" x2="-17.46" y2="6.67" layer="220"/>
+<text x="-14.5" y="-21.6" size="1.27" layer="220">Tzatziffi v8 - 0.9mm drill
+
+NTC: 35.56mm center to center
+
+Pin center = -19,05 +/- 2.54/2 = 
+-17,78 or -20,32
+
+Dill center off towards outside 
+0,1mm per pin
+
+pin is 0.64mm square:
+(-18,1) - (-17,46)
+(-20,64) - (-20)</text>
+<rectangle x1="-18.1" y1="8.57" x2="-17.46" y2="9.21" layer="220"/>
+<rectangle x1="-20.64" y1="6.03" x2="-20" y2="6.67" layer="220"/>
+<rectangle x1="-20.64" y1="8.57" x2="-20" y2="9.21" layer="220"/>
+<rectangle x1="-18.1" y1="11.11" x2="-17.46" y2="11.75" layer="220"/>
+<rectangle x1="-18.1" y1="13.65" x2="-17.46" y2="14.29" layer="220"/>
+<rectangle x1="-20.64" y1="11.11" x2="-20" y2="11.75" layer="220"/>
+<rectangle x1="-20.64" y1="13.65" x2="-20" y2="14.29" layer="220"/>
+<rectangle x1="-18.1" y1="16.19" x2="-17.46" y2="16.83" layer="220"/>
+<rectangle x1="-18.1" y1="18.73" x2="-17.46" y2="19.37" layer="220"/>
+<rectangle x1="-20.64" y1="16.19" x2="-20" y2="16.83" layer="220"/>
+<rectangle x1="-20.64" y1="18.73" x2="-20" y2="19.37" layer="220"/>
+<rectangle x1="-18.1" y1="21.27" x2="-17.46" y2="21.91" layer="220"/>
+<rectangle x1="-18.1" y1="23.81" x2="-17.46" y2="24.45" layer="220"/>
+<rectangle x1="-20.64" y1="21.27" x2="-20" y2="21.91" layer="220"/>
+<rectangle x1="-20.64" y1="23.81" x2="-20" y2="24.45" layer="220"/>
+<rectangle x1="-18.1" y1="-14.29" x2="-17.46" y2="-13.65" layer="220"/>
+<rectangle x1="-18.1" y1="-11.75" x2="-17.46" y2="-11.11" layer="220"/>
+<rectangle x1="-20.64" y1="-14.29" x2="-20" y2="-13.65" layer="220"/>
+<rectangle x1="-20.64" y1="-11.75" x2="-20" y2="-11.11" layer="220"/>
+<rectangle x1="-18.1" y1="-9.21" x2="-17.46" y2="-8.57" layer="220"/>
+<rectangle x1="-18.1" y1="-6.67" x2="-17.46" y2="-6.03" layer="220"/>
+<rectangle x1="-20.64" y1="-9.21" x2="-20" y2="-8.57" layer="220"/>
+<rectangle x1="-20.64" y1="-6.67" x2="-20" y2="-6.03" layer="220"/>
+<rectangle x1="-18.1" y1="-4.13" x2="-17.46" y2="-3.49" layer="220"/>
+<rectangle x1="-18.1" y1="-1.59" x2="-17.46" y2="-0.95" layer="220"/>
+<rectangle x1="-20.64" y1="-4.13" x2="-20" y2="-3.49" layer="220"/>
+<rectangle x1="-20.64" y1="-1.59" x2="-20" y2="-0.95" layer="220"/>
+<rectangle x1="-18.1" y1="0.95" x2="-17.46" y2="1.59" layer="220"/>
+<rectangle x1="-18.1" y1="3.49" x2="-17.46" y2="4.13" layer="220"/>
+<rectangle x1="-20.64" y1="0.95" x2="-20" y2="1.59" layer="220"/>
+<rectangle x1="-20.64" y1="3.49" x2="-20" y2="4.13" layer="220"/>
+<rectangle x1="-18.1" y1="-24.45" x2="-17.46" y2="-23.81" layer="220"/>
+<rectangle x1="-18.1" y1="-21.91" x2="-17.46" y2="-21.27" layer="220"/>
+<rectangle x1="-20.64" y1="-24.45" x2="-20" y2="-23.81" layer="220"/>
+<rectangle x1="-20.64" y1="-21.91" x2="-20" y2="-21.27" layer="220"/>
+<rectangle x1="-18.1" y1="-19.37" x2="-17.46" y2="-18.73" layer="220"/>
+<rectangle x1="-18.1" y1="-16.83" x2="-17.46" y2="-16.19" layer="220"/>
+<rectangle x1="-20.64" y1="-19.37" x2="-20" y2="-18.73" layer="220"/>
+<rectangle x1="-20.64" y1="-16.83" x2="-20" y2="-16.19" layer="220"/>
+<rectangle x1="17.46" y1="6.03" x2="18.1" y2="6.67" layer="220"/>
+<rectangle x1="17.46" y1="8.57" x2="18.1" y2="9.21" layer="220"/>
+<rectangle x1="14.92" y1="6.03" x2="15.56" y2="6.67" layer="220"/>
+<rectangle x1="14.92" y1="8.57" x2="15.56" y2="9.21" layer="220"/>
+<rectangle x1="17.46" y1="11.11" x2="18.1" y2="11.75" layer="220"/>
+<rectangle x1="17.46" y1="13.65" x2="18.1" y2="14.29" layer="220"/>
+<rectangle x1="14.92" y1="11.11" x2="15.56" y2="11.75" layer="220"/>
+<rectangle x1="14.92" y1="13.65" x2="15.56" y2="14.29" layer="220"/>
+<rectangle x1="17.46" y1="16.19" x2="18.1" y2="16.83" layer="220"/>
+<rectangle x1="17.46" y1="18.73" x2="18.1" y2="19.37" layer="220"/>
+<rectangle x1="14.92" y1="16.19" x2="15.56" y2="16.83" layer="220"/>
+<rectangle x1="14.92" y1="18.73" x2="15.56" y2="19.37" layer="220"/>
+<rectangle x1="17.46" y1="21.27" x2="18.1" y2="21.91" layer="220"/>
+<rectangle x1="17.46" y1="23.81" x2="18.1" y2="24.45" layer="220"/>
+<rectangle x1="14.92" y1="21.27" x2="15.56" y2="21.91" layer="220"/>
+<rectangle x1="14.92" y1="23.81" x2="15.56" y2="24.45" layer="220"/>
+<rectangle x1="17.46" y1="-14.29" x2="18.1" y2="-13.65" layer="220"/>
+<rectangle x1="17.46" y1="-11.75" x2="18.1" y2="-11.11" layer="220"/>
+<rectangle x1="14.92" y1="-14.29" x2="15.56" y2="-13.65" layer="220"/>
+<rectangle x1="14.92" y1="-11.75" x2="15.56" y2="-11.11" layer="220"/>
+<rectangle x1="17.46" y1="-9.21" x2="18.1" y2="-8.57" layer="220"/>
+<rectangle x1="17.46" y1="-6.67" x2="18.1" y2="-6.03" layer="220"/>
+<rectangle x1="14.92" y1="-9.21" x2="15.56" y2="-8.57" layer="220"/>
+<rectangle x1="14.92" y1="-6.67" x2="15.56" y2="-6.03" layer="220"/>
+<rectangle x1="17.46" y1="-4.13" x2="18.1" y2="-3.49" layer="220"/>
+<rectangle x1="17.46" y1="-1.59" x2="18.1" y2="-0.95" layer="220"/>
+<rectangle x1="14.92" y1="-4.13" x2="15.56" y2="-3.49" layer="220"/>
+<rectangle x1="14.92" y1="-1.59" x2="15.56" y2="-0.95" layer="220"/>
+<rectangle x1="17.46" y1="0.95" x2="18.1" y2="1.59" layer="220"/>
+<rectangle x1="17.46" y1="3.49" x2="18.1" y2="4.13" layer="220"/>
+<rectangle x1="14.92" y1="0.95" x2="15.56" y2="1.59" layer="220"/>
+<rectangle x1="14.92" y1="3.49" x2="15.56" y2="4.13" layer="220"/>
+<rectangle x1="17.46" y1="-24.45" x2="18.1" y2="-23.81" layer="220"/>
+<rectangle x1="17.46" y1="-21.91" x2="18.1" y2="-21.27" layer="220"/>
+<rectangle x1="14.92" y1="-24.45" x2="15.56" y2="-23.81" layer="220"/>
+<rectangle x1="14.92" y1="-21.91" x2="15.56" y2="-21.27" layer="220"/>
+<rectangle x1="17.46" y1="-19.37" x2="18.1" y2="-18.73" layer="220"/>
+<rectangle x1="17.46" y1="-16.83" x2="18.1" y2="-16.19" layer="220"/>
+<rectangle x1="14.92" y1="-19.37" x2="15.56" y2="-18.73" layer="220"/>
+<rectangle x1="14.92" y1="-16.83" x2="15.56" y2="-16.19" layer="220"/>
+</package>
+<package name="TSOC6">
+<description>&lt;b&gt;TSOC 6&lt;/b&gt;</description>
+<circle x="-2.413" y="-2.286" radius="0.254" width="0.1524" layer="21"/>
+<wire x1="1.8542" y1="1.8034" x2="1.8542" y2="-1.8034" width="0.254" layer="21"/>
+<wire x1="-1.8542" y1="-1.8034" x2="-1.8542" y2="1.8034" width="0.254" layer="21"/>
+<rectangle x1="-1.3716" y1="-2.0828" x2="-1.1684" y2="-1.0668" layer="51"/>
+<rectangle x1="-0.1016" y1="-2.0828" x2="0.1016" y2="-1.0668" layer="51"/>
+<rectangle x1="1.1684" y1="-2.0828" x2="1.3716" y2="-1.0668" layer="51"/>
+<rectangle x1="1.1684" y1="1.0668" x2="1.3716" y2="2.0828" layer="51"/>
+<rectangle x1="-0.1016" y1="1.0668" x2="0.1016" y2="2.0828" layer="51"/>
+<rectangle x1="-1.3716" y1="1.0668" x2="-1.1684" y2="2.0828" layer="51"/>
+<smd name="1" x="-1.27" y="-1.7002" dx="0.53" dy="1.53" layer="1"/>
+<smd name="2" x="0" y="-1.7002" dx="0.53" dy="1.53" layer="1"/>
+<smd name="3" x="1.27" y="-1.7002" dx="0.53" dy="1.53" layer="1"/>
+<smd name="4" x="1.27" y="1.7002" dx="0.53" dy="1.53" layer="1"/>
+<smd name="5" x="0" y="1.7002" dx="0.53" dy="1.53" layer="1"/>
+<smd name="6" x="-1.27" y="1.7002" dx="0.53" dy="1.53" layer="1"/>
+<text x="-2.54" y="2.54" size="1.27" layer="25" font="vector">&gt;NAME</text>
+<text x="-2.54" y="-3.81" size="1.27" layer="27" font="vector">&gt;VALUE</text>
+</package>
+<package name="USB-A-S">
+<description>&lt;b&gt;USB Series A Surface Mounted&lt;/b&gt;</description>
+<wire x1="3.6957" y1="6.5659" x2="-10.287" y2="6.5659" width="0.127" layer="21"/>
+<wire x1="3.6957" y1="-6.5659" x2="-10.287" y2="-6.5659" width="0.127" layer="21"/>
+<wire x1="-10.287" y1="6.477" x2="-10.287" y2="-6.477" width="0.127" layer="21"/>
+<wire x1="3.7084" y1="6.5024" x2="3.7084" y2="-6.5024" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="-5.08" x2="-8.89" y2="-4.445" width="0.127" layer="21"/>
+<wire x1="-8.89" y1="-4.445" x2="-8.89" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="-8.89" y1="-1.27" x2="-2.54" y2="-0.635" width="0.127" layer="21"/>
+<wire x1="-2.54" y1="5.08" x2="-8.89" y2="4.445" width="0.127" layer="21"/>
+<wire x1="-8.89" y1="4.445" x2="-8.89" y2="1.27" width="0.127" layer="21"/>
+<wire x1="-8.89" y1="1.27" x2="-2.54" y2="0.635" width="0.127" layer="21"/>
+<smd name="D+" x="3.45" y="-1" dx="3" dy="0.9" layer="1"/>
+<smd name="D-" x="3.45" y="1" dx="3" dy="0.9" layer="1"/>
+<smd name="GND" x="3.45" y="-3" dx="3" dy="0.9" layer="1"/>
+<pad name="P$5" x="0" y="-6.5659" drill="2.3114" rot="R270"/>
+<pad name="P$6" x="0" y="6.5659" drill="2.3114" rot="R270"/>
+<smd name="VBUS" x="3.45" y="3" dx="3" dy="0.9" layer="1"/>
+<text x="5.715" y="3.81" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+</package>
+<package name="USB-B-PTH">
+<description>&lt;b&gt;USB Series B Hole Mounted&lt;/b&gt;</description>
+<wire x1="-12.5" y1="6" x2="-8.6" y2="6" width="0.2032" layer="51"/>
+<wire x1="-8.6" y1="6" x2="-8.6" y2="-6" width="0.2032" layer="51"/>
+<wire x1="-8.6" y1="-6" x2="-12.5" y2="-6" width="0.2032" layer="51"/>
+<wire x1="-12.5" y1="-6" x2="-12.5" y2="6" width="0.2032" layer="51"/>
+<wire x1="-8.6" y1="6" x2="-4.8" y2="6" width="0.2032" layer="21"/>
+<wire x1="-8.6" y1="-6" x2="-4.8" y2="-6" width="0.2032" layer="21"/>
+<wire x1="-0.6" y1="-6" x2="3.3" y2="-6" width="0.2032" layer="21"/>
+<wire x1="3.3" y1="-6" x2="3.3" y2="6" width="0.2032" layer="21"/>
+<wire x1="3.3" y1="6" x2="-0.6" y2="6" width="0.2032" layer="21"/>
+<pad name="D+" x="0" y="1.25" drill="0.9144" diameter="1.6764" rot="R270"/>
+<pad name="D-" x="1.9812" y="1.25" drill="0.9144" diameter="1.6764" rot="R90"/>
+<pad name="GND" x="0" y="-1.25" drill="0.9144" diameter="1.6764" rot="R270"/>
+<pad name="S1" x="-2.7178" y="-6.0198" drill="2.286"/>
+<pad name="S2" x="-2.7178" y="6.0198" drill="2.286"/>
+<pad name="VBUS" x="1.9812" y="-1.25" drill="0.9144" diameter="1.6764" rot="R90"/>
+<text x="-1.27" y="3.81" size="0.4064" layer="25">&gt;NAME</text>
+<text x="-1.27" y="2.54" size="0.4064" layer="27">&gt;VALUE</text>
+</package>
+<package name="USB-B-PTH-VERTICAL">
+<description>&lt;b&gt;USB Series B Hole Mounted&lt;/b&gt;</description>
+<wire x1="0" y1="0" x2="11.938" y2="0" width="0.254" layer="21"/>
+<wire x1="11.938" y1="0" x2="11.938" y2="11.303" width="0.254" layer="21"/>
+<wire x1="11.938" y1="11.303" x2="0" y2="11.303" width="0.254" layer="21"/>
+<wire x1="0" y1="11.303" x2="0" y2="0" width="0.254" layer="21"/>
+<wire x1="1.27" y1="1.27" x2="10.795" y2="1.27" width="0.254" layer="51"/>
+<wire x1="10.795" y1="1.27" x2="10.795" y2="8.255" width="0.254" layer="51"/>
+<wire x1="10.795" y1="8.255" x2="8.89" y2="10.16" width="0.254" layer="51"/>
+<wire x1="8.89" y1="10.16" x2="3.175" y2="10.16" width="0.254" layer="51"/>
+<wire x1="3.175" y1="10.16" x2="1.27" y2="8.255" width="0.254" layer="51"/>
+<wire x1="1.27" y1="8.255" x2="1.27" y2="1.27" width="0.254" layer="51"/>
+<pad name="D+" x="4.826" y="4.3942" drill="0.9144" diameter="1.6764" rot="R270"/>
+<pad name="D-" x="4.826" y="7.5946" drill="0.9144" diameter="1.6764" rot="R270"/>
+<pad name="GND" x="7.3152" y="4.3942" drill="0.9144" diameter="1.6764" rot="R90"/>
+<pad name="P$1" x="0" y="4.9022" drill="2.286"/>
+<pad name="P$2" x="12.0396" y="4.9022" drill="2.286"/>
+<pad name="VBUS" x="7.3152" y="7.5946" drill="0.9144" diameter="1.6764" rot="R90"/>
+<text x="8.89" y="-1.27" size="0.8128" layer="25">&gt;NAME</text>
+<text x="0" y="-1.27" size="0.8128" layer="27">&gt;VALUE</text>
+</package>
+<package name="USB-MICROB-SMT-DIP">
+<wire x1="-3.4" y1="-2.25" x2="-3" y2="-2.25" width="0.127" layer="51"/>
+<wire x1="3" y1="-2.25" x2="3.4" y2="-2.25" width="0.127" layer="51"/>
+<wire x1="-3.4" y1="-2.25" x2="-3.4" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="-3.4" y1="-1.45" x2="-3.4" y2="2.75" width="0.127" layer="51"/>
+<wire x1="3.4" y1="2.75" x2="3.4" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="3.4" y1="-1.45" x2="3.4" y2="-2.25" width="0.127" layer="51"/>
+<wire x1="-3.4" y1="-1.45" x2="3.4" y2="-1.45" width="0.127" layer="51"/>
+<wire x1="-3.4" y1="1.15" x2="-3.4" y2="2.75" width="0.2032" layer="21"/>
+<wire x1="3.4" y1="1.15" x2="3.4" y2="2.75" width="0.2032" layer="21"/>
+<wire x1="-3.4" y1="-1.45" x2="3.4" y2="-1.45" width="0.2032" layer="21"/>
+<wire x1="-3.4" y1="2.75" x2="3.4" y2="2.75" width="0.127" layer="51"/>
+<wire x1="-3.4" y1="2.75" x2="3.4" y2="2.75" width="0.2032" layer="21"/>
+<wire x1="-3.4" y1="-2.25" x2="-4" y2="-2.85" width="0.2032" layer="51"/>
+<wire x1="3.4" y1="-2.25" x2="4" y2="-2.85" width="0.2032" layer="51"/>
+<wire x1="-3" y1="-2.25" x2="-3" y2="-2.65" width="0.127" layer="51"/>
+<wire x1="-2.8" y1="-2.9" x2="2.75" y2="-2.9" width="0.127" layer="51"/>
+<wire x1="3" y1="-2.7" x2="3" y2="-2.25" width="0.127" layer="51"/>
+<wire x1="-3" y1="-2.65" x2="-2.8" y2="-2.9" width="0.127" layer="51" curve="84.547378"/>
+<wire x1="2.75" y1="-2.9" x2="3" y2="-2.7" width="0.127" layer="51" curve="84.547378"/>
+<smd name="D+" x="0" y="2.675" dx="1.35" dy="0.4" layer="1" rot="R90"/>
+<smd name="D-" x="-0.65" y="2.675" dx="1.35" dy="0.4" layer="1" rot="R90"/>
+<smd name="GND" x="1.3" y="2.675" dx="1.35" dy="0.4" layer="1" rot="R90"/>
+<smd name="ID" x="0.65" y="2.675" dx="1.35" dy="0.4" layer="1" rot="R90"/>
+<pad name="MT1" x="-3.5" y="0" drill="1.15" diameter="1.7" rot="R90"/>
+<pad name="MT2" x="3.5" y="0" drill="1.15" diameter="1.7" rot="R90"/>
+<pad name="MT3" x="-2.5" y="2.625" drill="0.85" diameter="1.25" rot="R90"/>
+<pad name="MT4" x="2.5" y="2.625" drill="0.85" diameter="1.25" rot="R90"/>
+<smd name="P$1" x="-1" y="0" dx="1.5" dy="1.9" layer="1"/>
+<smd name="P$2" x="1" y="0.01" dx="1.5" dy="1.9" layer="1"/>
+<smd name="VBUS" x="-1.3" y="2.675" dx="1.35" dy="0.4" layer="1" rot="R90"/>
+<text x="-1.6" y="-0.45" size="0.762" layer="25">&gt;NAME</text>
+<text x="-1.905" y="-3.275" size="0.762" layer="27">&gt;VALUE</text>
+</package>
+<package name="USB-A-HU">
+<description>&lt;b&gt;USB Series A Hole Mounted Up-Right&lt;/b&gt;</description>
+<wire x1="-11.6" y1="2.6" x2="-11.6" y2="-2.6" width="0.127" layer="21"/>
+<wire x1="7.7" y1="2.6" x2="7.7" y2="-2.6" width="0.127" layer="21"/>
+<wire x1="-11.6" y1="2.6" x2="7.7" y2="2.6" width="0.127" layer="21"/>
+<wire x1="-11.6" y1="-2.6" x2="7.7" y2="-2.6" width="0.127" layer="21"/>
+<pad name="VBUS" x="0.73" y="0" drill="0.9"/>
+<pad name="D-" x="2.73" y="0" drill="0.9"/>
+<pad name="D+" x="4.73" y="0" drill="0.9"/>
+<pad name="GND" x="6.73" y="0" drill="0.9"/>
+<pad name="P$5" x="0" y="2.72" drill="1.5"/>
+<pad name="P$6" x="0" y="-2.72" drill="1.5"/>
+<pad name="P$7" x="7" y="2.72" drill="1.5"/>
+<pad name="P$8" x="7" y="-2.72" drill="1.5"/>
+<text x="10" y="1" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+</package>
 </packages>
 <symbols>
 <symbol name="2X20CHIP">
@@ -19715,25 +19801,35 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 <text x="-8.89" y="-11.43" size="1.778" layer="95" font="vector" rot="SR0">&gt;VALUE</text>
 <pin name="SW" x="15.24" y="0" direction="pwr" rot="R180"/>
 </symbol>
-<symbol name="USB-MICROB">
-<wire x1="2.54" y1="8.89" x2="-2.54" y2="8.89" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="8.89" x2="-2.54" y2="-6.35" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="-6.35" x2="2.54" y2="-6.35" width="0.254" layer="94"/>
-<text x="1.524" y="-3.556" size="2.54" layer="94" rot="R90">USB B</text>
-<pin name="D+" x="-5.08" y="2.54" visible="pad" length="short"/>
-<pin name="D-" x="-5.08" y="0" visible="pad" length="short"/>
-<pin name="VBUS" x="-5.08" y="-2.54" visible="pad" length="short"/>
-<pin name="GND" x="-5.08" y="7.62" visible="pad" length="short"/>
-<pin name="USBID" x="-5.08" y="5.08" visible="pad" length="short"/>
-<pin name="SHIELD" x="-5.08" y="-5.08" visible="pad" length="short"/>
-<text x="-2.54" y="10.16" size="1.778" layer="95">&gt;NAME</text>
-<text x="-2.54" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+<symbol name="DS2431">
+<wire x1="5.08" y1="7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-7.62" x2="-7.62" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-7.62" x2="-7.62" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="7.62" x2="5.08" y2="7.62" width="0.254" layer="94"/>
+<pin name="GND" x="-2.54" y="-12.7" length="middle" rot="R90"/>
+<pin name="IO" x="10.16" y="2.54" length="middle" rot="R180"/>
+<pin name="NC@1" x="-5.08" y="7.62" length="point" rot="R90"/>
+<pin name="NC@2" x="-2.54" y="7.62" length="point" rot="R90"/>
+<pin name="NC@3" x="0" y="7.62" length="point" rot="R90"/>
+<pin name="NC@4" x="2.54" y="7.62" length="point" rot="R90"/>
+<text x="2.54" y="-12.7" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.54" y="-15.24" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="USB">
+<wire x1="5.08" y1="8.89" x2="0" y2="8.89" width="0.254" layer="94"/>
+<wire x1="0" y1="8.89" x2="0" y2="-3.81" width="0.254" layer="94"/>
+<wire x1="0" y1="-3.81" x2="5.08" y2="-3.81" width="0.254" layer="94"/>
+<text x="3.81" y="0" size="2.54" layer="94" rot="R90">USB</text>
+<pin name="D+" x="-2.54" y="7.62" visible="pad" length="short"/>
+<pin name="D-" x="-2.54" y="5.08" visible="pad" length="short"/>
+<pin name="VBUS" x="-2.54" y="2.54" visible="pad" length="short"/>
+<pin name="GND" x="-2.54" y="0" visible="pad" length="short"/>
+<pin name="ID" x="-2.54" y="-2.54" visible="pad" length="short"/>
 </symbol>
 </symbols>
 <devicesets>
 <deviceset name="2X20-CHIP" prefix="J">
-<description>This package has 0.8mm drills.
-All the drills are offseted 0.075mm to the outside</description>
+<description>Chip header</description>
 <gates>
 <gate name="G$1" symbol="2X20CHIP" x="0" y="0"/>
 </gates>
@@ -20011,93 +20107,6 @@ All the drills are offseted 0.075mm to the outside</description>
 <technology name=""/>
 </technologies>
 </device>
-<device name="0.9DRILLS" package="2X20CHIP_OFFSET-TH_0.9">
-<connects>
-<connect gate="G$1" pin="ACIN-5V" pad="CHG-IN"/>
-<connect gate="G$1" pin="AP-EINT1" pad="AP-EINT1"/>
-<connect gate="G$1" pin="AP-EINT3" pad="AP-EINT3"/>
-<connect gate="G$1" pin="CSICK" pad="CSICK"/>
-<connect gate="G$1" pin="CSID0" pad="CSID0"/>
-<connect gate="G$1" pin="CSID1" pad="CSID1"/>
-<connect gate="G$1" pin="CSID2" pad="CSID2"/>
-<connect gate="G$1" pin="CSID3" pad="CSID3"/>
-<connect gate="G$1" pin="CSID4" pad="CSID4"/>
-<connect gate="G$1" pin="CSID5" pad="CSID5"/>
-<connect gate="G$1" pin="CSID6" pad="CSID6"/>
-<connect gate="G$1" pin="CSID7" pad="CSID7"/>
-<connect gate="G$1" pin="CSIHSYNC" pad="CSIHSYNC"/>
-<connect gate="G$1" pin="CSIPCK" pad="CSIPCK"/>
-<connect gate="G$1" pin="CSIVSYNC" pad="CSIVSYNC"/>
-<connect gate="G$1" pin="GND@1" pad="GND@10"/>
-<connect gate="G$1" pin="GND@10" pad="GND@8"/>
-<connect gate="G$1" pin="GND@2" pad="GND@1"/>
-<connect gate="G$1" pin="GND@3" pad="GND@2"/>
-<connect gate="G$1" pin="GND@4" pad="GND@3"/>
-<connect gate="G$1" pin="GND@5" pad="GND@4"/>
-<connect gate="G$1" pin="GND@7" pad="GND@5"/>
-<connect gate="G$1" pin="GND@8" pad="GND@6"/>
-<connect gate="G$1" pin="GND@9" pad="GND@7"/>
-<connect gate="G$1" pin="HPCOM" pad="HPCOM"/>
-<connect gate="G$1" pin="HPL" pad="HPL"/>
-<connect gate="G$1" pin="HPR" pad="HPR"/>
-<connect gate="G$1" pin="LCD-CLK" pad="LCD-CLK"/>
-<connect gate="G$1" pin="LCD-D10" pad="LCD-D10"/>
-<connect gate="G$1" pin="LCD-D11" pad="LCD-D11"/>
-<connect gate="G$1" pin="LCD-D12" pad="LCD-D12"/>
-<connect gate="G$1" pin="LCD-D13" pad="LCD-D13"/>
-<connect gate="G$1" pin="LCD-D14" pad="LCD-D14"/>
-<connect gate="G$1" pin="LCD-D15" pad="LCD-D15"/>
-<connect gate="G$1" pin="LCD-D18" pad="LCD-D18"/>
-<connect gate="G$1" pin="LCD-D19" pad="LCD-D19"/>
-<connect gate="G$1" pin="LCD-D2" pad="LCD-D2"/>
-<connect gate="G$1" pin="LCD-D20" pad="LCD-D20"/>
-<connect gate="G$1" pin="LCD-D21" pad="LCD-D21"/>
-<connect gate="G$1" pin="LCD-D22" pad="LCD-D22"/>
-<connect gate="G$1" pin="LCD-D23" pad="LCD-D23"/>
-<connect gate="G$1" pin="LCD-D3" pad="LCD-D3"/>
-<connect gate="G$1" pin="LCD-D4" pad="LCD-D4"/>
-<connect gate="G$1" pin="LCD-D5" pad="LCD-D5"/>
-<connect gate="G$1" pin="LCD-D6" pad="LCD-D6"/>
-<connect gate="G$1" pin="LCD-D7" pad="LCD-D7"/>
-<connect gate="G$1" pin="LCD-DE" pad="LCD-DE"/>
-<connect gate="G$1" pin="LCDHSYNC" pad="LCD-HSYNC"/>
-<connect gate="G$1" pin="LCDVSYNC" pad="LCD-VSYNC"/>
-<connect gate="G$1" pin="LRADC" pad="LRADC"/>
-<connect gate="G$1" pin="MICIN1" pad="MICIN1"/>
-<connect gate="G$1" pin="MICM" pad="MICM"/>
-<connect gate="G$1" pin="PWM0" pad="PWM0"/>
-<connect gate="G$1" pin="PWRON" pad="PWRON"/>
-<connect gate="G$1" pin="TS" pad="TS"/>
-<connect gate="G$1" pin="TWI1-SCK" pad="TWI1-SCK"/>
-<connect gate="G$1" pin="TWI1-SDA" pad="TWI1-SDA"/>
-<connect gate="G$1" pin="TWI2-SCK" pad="TWI2-SCK"/>
-<connect gate="G$1" pin="TWI2-SDA" pad="TWI2-SDA"/>
-<connect gate="G$1" pin="UART1-RX" pad="UART1-RX"/>
-<connect gate="G$1" pin="UART1-TX" pad="UART1-TX"/>
-<connect gate="G$1" pin="UBOOT" pad="FEL"/>
-<connect gate="G$1" pin="VBAT-EXT" pad="BAT"/>
-<connect gate="G$1" pin="VCC-1V8" pad="VCC1V8"/>
-<connect gate="G$1" pin="VCC-5V@1" pad="VCC5V@0"/>
-<connect gate="G$1" pin="VCC-5V@2" pad="VCC5V@1"/>
-<connect gate="G$1" pin="VCC3V3@1" pad="VCC3V3@1"/>
-<connect gate="G$1" pin="VCC3V3@2" pad="VCC3V3"/>
-<connect gate="G$1" pin="X1" pad="X1"/>
-<connect gate="G$1" pin="X2" pad="X2"/>
-<connect gate="G$1" pin="XIO-P0" pad="XIO-P0"/>
-<connect gate="G$1" pin="XIO-P1" pad="XIO-P1"/>
-<connect gate="G$1" pin="XIO-P2" pad="XIO-P2"/>
-<connect gate="G$1" pin="XIO-P3" pad="XIO-P3"/>
-<connect gate="G$1" pin="XIO-P4" pad="XIO-P4"/>
-<connect gate="G$1" pin="XIO-P5" pad="XIO-P5"/>
-<connect gate="G$1" pin="XIO-P6" pad="XIO-P6"/>
-<connect gate="G$1" pin="XIO-P7" pad="XIO-P7"/>
-<connect gate="G$1" pin="Y1" pad="Y1"/>
-<connect gate="G$1" pin="Y2" pad="Y2"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
 <device name="0.8DRILLS" package="2X20CHIP_OFFSET-TH_0.8">
 <connects>
 <connect gate="G$1" pin="ACIN-5V" pad="CHG-IN"/>
@@ -20269,94 +20278,9 @@ All the drills are offseted 0.075mm to the outside</description>
 <connect gate="G$1" pin="Y2" pad="Y2"/>
 </connects>
 <technologies>
-<technology name=""/>
-</technologies>
-</device>
-<device name="0.7_DRILL" package="2X20CHIP_NOOFFSET-TH_0.7">
-<connects>
-<connect gate="G$1" pin="ACIN-5V" pad="CHG-IN"/>
-<connect gate="G$1" pin="AP-EINT1" pad="AP-EINT1"/>
-<connect gate="G$1" pin="AP-EINT3" pad="AP-EINT3"/>
-<connect gate="G$1" pin="CSICK" pad="CSICK"/>
-<connect gate="G$1" pin="CSID0" pad="CSID0"/>
-<connect gate="G$1" pin="CSID1" pad="CSID1"/>
-<connect gate="G$1" pin="CSID2" pad="CSID2"/>
-<connect gate="G$1" pin="CSID3" pad="CSID3"/>
-<connect gate="G$1" pin="CSID4" pad="CSID4"/>
-<connect gate="G$1" pin="CSID5" pad="CSID5"/>
-<connect gate="G$1" pin="CSID6" pad="CSID6"/>
-<connect gate="G$1" pin="CSID7" pad="CSID7"/>
-<connect gate="G$1" pin="CSIHSYNC" pad="CSIHSYNC"/>
-<connect gate="G$1" pin="CSIPCK" pad="CSIPCK"/>
-<connect gate="G$1" pin="CSIVSYNC" pad="CSIVSYNC"/>
-<connect gate="G$1" pin="GND@1" pad="GND@10"/>
-<connect gate="G$1" pin="GND@10" pad="GND@8"/>
-<connect gate="G$1" pin="GND@2" pad="GND@1"/>
-<connect gate="G$1" pin="GND@3" pad="GND@2"/>
-<connect gate="G$1" pin="GND@4" pad="GND@3"/>
-<connect gate="G$1" pin="GND@5" pad="GND@4"/>
-<connect gate="G$1" pin="GND@7" pad="GND@5"/>
-<connect gate="G$1" pin="GND@8" pad="GND@6"/>
-<connect gate="G$1" pin="GND@9" pad="GND@7"/>
-<connect gate="G$1" pin="HPCOM" pad="HPCOM"/>
-<connect gate="G$1" pin="HPL" pad="HPL"/>
-<connect gate="G$1" pin="HPR" pad="HPR"/>
-<connect gate="G$1" pin="LCD-CLK" pad="LCD-CLK"/>
-<connect gate="G$1" pin="LCD-D10" pad="LCD-D10"/>
-<connect gate="G$1" pin="LCD-D11" pad="LCD-D11"/>
-<connect gate="G$1" pin="LCD-D12" pad="LCD-D12"/>
-<connect gate="G$1" pin="LCD-D13" pad="LCD-D13"/>
-<connect gate="G$1" pin="LCD-D14" pad="LCD-D14"/>
-<connect gate="G$1" pin="LCD-D15" pad="LCD-D15"/>
-<connect gate="G$1" pin="LCD-D18" pad="LCD-D18"/>
-<connect gate="G$1" pin="LCD-D19" pad="LCD-D19"/>
-<connect gate="G$1" pin="LCD-D2" pad="LCD-D2"/>
-<connect gate="G$1" pin="LCD-D20" pad="LCD-D20"/>
-<connect gate="G$1" pin="LCD-D21" pad="LCD-D21"/>
-<connect gate="G$1" pin="LCD-D22" pad="LCD-D22"/>
-<connect gate="G$1" pin="LCD-D23" pad="LCD-D23"/>
-<connect gate="G$1" pin="LCD-D3" pad="LCD-D3"/>
-<connect gate="G$1" pin="LCD-D4" pad="LCD-D4"/>
-<connect gate="G$1" pin="LCD-D5" pad="LCD-D5"/>
-<connect gate="G$1" pin="LCD-D6" pad="LCD-D6"/>
-<connect gate="G$1" pin="LCD-D7" pad="LCD-D7"/>
-<connect gate="G$1" pin="LCD-DE" pad="LCD-DE"/>
-<connect gate="G$1" pin="LCDHSYNC" pad="LCD-HSYNC"/>
-<connect gate="G$1" pin="LCDVSYNC" pad="LCD-VSYNC"/>
-<connect gate="G$1" pin="LRADC" pad="LRADC"/>
-<connect gate="G$1" pin="MICIN1" pad="MICIN1"/>
-<connect gate="G$1" pin="MICM" pad="MICM"/>
-<connect gate="G$1" pin="PWM0" pad="PWM0"/>
-<connect gate="G$1" pin="PWRON" pad="PWRON"/>
-<connect gate="G$1" pin="TS" pad="TS"/>
-<connect gate="G$1" pin="TWI1-SCK" pad="TWI1-SCK"/>
-<connect gate="G$1" pin="TWI1-SDA" pad="TWI1-SDA"/>
-<connect gate="G$1" pin="TWI2-SCK" pad="TWI2-SCK"/>
-<connect gate="G$1" pin="TWI2-SDA" pad="TWI2-SDA"/>
-<connect gate="G$1" pin="UART1-RX" pad="UART1-RX"/>
-<connect gate="G$1" pin="UART1-TX" pad="UART1-TX"/>
-<connect gate="G$1" pin="UBOOT" pad="FEL"/>
-<connect gate="G$1" pin="VBAT-EXT" pad="BAT"/>
-<connect gate="G$1" pin="VCC-1V8" pad="VCC1V8"/>
-<connect gate="G$1" pin="VCC-5V@1" pad="VCC5V@0"/>
-<connect gate="G$1" pin="VCC-5V@2" pad="VCC5V@1"/>
-<connect gate="G$1" pin="VCC3V3@1" pad="VCC3V3@1"/>
-<connect gate="G$1" pin="VCC3V3@2" pad="VCC3V3"/>
-<connect gate="G$1" pin="X1" pad="X1"/>
-<connect gate="G$1" pin="X2" pad="X2"/>
-<connect gate="G$1" pin="XIO-P0" pad="XIO-P0"/>
-<connect gate="G$1" pin="XIO-P1" pad="XIO-P1"/>
-<connect gate="G$1" pin="XIO-P2" pad="XIO-P2"/>
-<connect gate="G$1" pin="XIO-P3" pad="XIO-P3"/>
-<connect gate="G$1" pin="XIO-P4" pad="XIO-P4"/>
-<connect gate="G$1" pin="XIO-P5" pad="XIO-P5"/>
-<connect gate="G$1" pin="XIO-P6" pad="XIO-P6"/>
-<connect gate="G$1" pin="XIO-P7" pad="XIO-P7"/>
-<connect gate="G$1" pin="Y1" pad="Y1"/>
-<connect gate="G$1" pin="Y2" pad="Y2"/>
-</connects>
-<technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DESC" value="0.8mm drill, no offset" constant="no"/>
+</technology>
 </technologies>
 </device>
 <device name="0.8_DRILL_0.15OFFSET_LR" package="2X20CHIP_0.15MM_OFFSET_TH_08">
@@ -20443,7 +20367,187 @@ All the drills are offseted 0.075mm to the outside</description>
 <connect gate="G$1" pin="Y2" pad="Y2"/>
 </connects>
 <technologies>
-<technology name=""/>
+<technology name="">
+<attribute name="DESC" value="This package has 0.8mm drills. All the drills are offseted 0.075mm to the outside  2016/10/25 Build by elecrow: 5 out of 25 boards worked, 2 where loose, 18 to small " constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="0.9DRILLS" package="2X20CHIP_SINGLE_OFFSET-TH">
+<connects>
+<connect gate="G$1" pin="ACIN-5V" pad="CHG-IN"/>
+<connect gate="G$1" pin="AP-EINT1" pad="AP-EINT1"/>
+<connect gate="G$1" pin="AP-EINT3" pad="AP-EINT3"/>
+<connect gate="G$1" pin="CSICK" pad="CSICK"/>
+<connect gate="G$1" pin="CSID0" pad="CSID0"/>
+<connect gate="G$1" pin="CSID1" pad="CSID1"/>
+<connect gate="G$1" pin="CSID2" pad="CSID2"/>
+<connect gate="G$1" pin="CSID3" pad="CSID3"/>
+<connect gate="G$1" pin="CSID4" pad="CSID4"/>
+<connect gate="G$1" pin="CSID5" pad="CSID5"/>
+<connect gate="G$1" pin="CSID6" pad="CSID6"/>
+<connect gate="G$1" pin="CSID7" pad="CSID7"/>
+<connect gate="G$1" pin="CSIHSYNC" pad="CSIHSYNC"/>
+<connect gate="G$1" pin="CSIPCK" pad="CSIPCK"/>
+<connect gate="G$1" pin="CSIVSYNC" pad="CSIVSYNC"/>
+<connect gate="G$1" pin="GND@1" pad="GND@10"/>
+<connect gate="G$1" pin="GND@10" pad="GND@8"/>
+<connect gate="G$1" pin="GND@2" pad="GND@1"/>
+<connect gate="G$1" pin="GND@3" pad="GND@2"/>
+<connect gate="G$1" pin="GND@4" pad="GND@3"/>
+<connect gate="G$1" pin="GND@5" pad="GND@4"/>
+<connect gate="G$1" pin="GND@7" pad="GND@5"/>
+<connect gate="G$1" pin="GND@8" pad="GND@6"/>
+<connect gate="G$1" pin="GND@9" pad="GND@7"/>
+<connect gate="G$1" pin="HPCOM" pad="HPCOM"/>
+<connect gate="G$1" pin="HPL" pad="HPL"/>
+<connect gate="G$1" pin="HPR" pad="HPR"/>
+<connect gate="G$1" pin="LCD-CLK" pad="LCD-CLK"/>
+<connect gate="G$1" pin="LCD-D10" pad="LCD-D10"/>
+<connect gate="G$1" pin="LCD-D11" pad="LCD-D11"/>
+<connect gate="G$1" pin="LCD-D12" pad="LCD-D12"/>
+<connect gate="G$1" pin="LCD-D13" pad="LCD-D13"/>
+<connect gate="G$1" pin="LCD-D14" pad="LCD-D14"/>
+<connect gate="G$1" pin="LCD-D15" pad="LCD-D15"/>
+<connect gate="G$1" pin="LCD-D18" pad="LCD-D18"/>
+<connect gate="G$1" pin="LCD-D19" pad="LCD-D19"/>
+<connect gate="G$1" pin="LCD-D2" pad="LCD-D2"/>
+<connect gate="G$1" pin="LCD-D20" pad="LCD-D20"/>
+<connect gate="G$1" pin="LCD-D21" pad="LCD-D21"/>
+<connect gate="G$1" pin="LCD-D22" pad="LCD-D22"/>
+<connect gate="G$1" pin="LCD-D23" pad="LCD-D23"/>
+<connect gate="G$1" pin="LCD-D3" pad="LCD-D3"/>
+<connect gate="G$1" pin="LCD-D4" pad="LCD-D4"/>
+<connect gate="G$1" pin="LCD-D5" pad="LCD-D5"/>
+<connect gate="G$1" pin="LCD-D6" pad="LCD-D6"/>
+<connect gate="G$1" pin="LCD-D7" pad="LCD-D7"/>
+<connect gate="G$1" pin="LCD-DE" pad="LCD-DE"/>
+<connect gate="G$1" pin="LCDHSYNC" pad="LCD-HSYNC"/>
+<connect gate="G$1" pin="LCDVSYNC" pad="LCD-VSYNC"/>
+<connect gate="G$1" pin="LRADC" pad="LRADC"/>
+<connect gate="G$1" pin="MICIN1" pad="MICIN1"/>
+<connect gate="G$1" pin="MICM" pad="MICM"/>
+<connect gate="G$1" pin="PWM0" pad="PWM0"/>
+<connect gate="G$1" pin="PWRON" pad="PWRON"/>
+<connect gate="G$1" pin="TS" pad="TS"/>
+<connect gate="G$1" pin="TWI1-SCK" pad="TWI1-SCK"/>
+<connect gate="G$1" pin="TWI1-SDA" pad="TWI1-SDA"/>
+<connect gate="G$1" pin="TWI2-SCK" pad="TWI2-SCK"/>
+<connect gate="G$1" pin="TWI2-SDA" pad="TWI2-SDA"/>
+<connect gate="G$1" pin="UART1-RX" pad="UART1-RX"/>
+<connect gate="G$1" pin="UART1-TX" pad="UART1-TX"/>
+<connect gate="G$1" pin="UBOOT" pad="FEL"/>
+<connect gate="G$1" pin="VBAT-EXT" pad="BAT"/>
+<connect gate="G$1" pin="VCC-1V8" pad="VCC1V8"/>
+<connect gate="G$1" pin="VCC-5V@1" pad="VCC5V@0"/>
+<connect gate="G$1" pin="VCC-5V@2" pad="VCC5V@1"/>
+<connect gate="G$1" pin="VCC3V3@1" pad="VCC3V3@1"/>
+<connect gate="G$1" pin="VCC3V3@2" pad="VCC3V3"/>
+<connect gate="G$1" pin="X1" pad="X1"/>
+<connect gate="G$1" pin="X2" pad="X2"/>
+<connect gate="G$1" pin="XIO-P0" pad="XIO-P0"/>
+<connect gate="G$1" pin="XIO-P1" pad="XIO-P1"/>
+<connect gate="G$1" pin="XIO-P2" pad="XIO-P2"/>
+<connect gate="G$1" pin="XIO-P3" pad="XIO-P3"/>
+<connect gate="G$1" pin="XIO-P4" pad="XIO-P4"/>
+<connect gate="G$1" pin="XIO-P5" pad="XIO-P5"/>
+<connect gate="G$1" pin="XIO-P6" pad="XIO-P6"/>
+<connect gate="G$1" pin="XIO-P7" pad="XIO-P7"/>
+<connect gate="G$1" pin="Y1" pad="Y1"/>
+<connect gate="G$1" pin="Y2" pad="Y2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DESC" value="Orignial Tzatziki v7 board, 0.127mm offset per hole, worked but hard to assemble" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="0.9DRILLS_2" package="2X20CHIP_BANK_OFFSET_TH_0.9">
+<connects>
+<connect gate="G$1" pin="ACIN-5V" pad="CHG-IN"/>
+<connect gate="G$1" pin="AP-EINT1" pad="AP-EINT1"/>
+<connect gate="G$1" pin="AP-EINT3" pad="AP-EINT3"/>
+<connect gate="G$1" pin="CSICK" pad="CSICK"/>
+<connect gate="G$1" pin="CSID0" pad="CSID0"/>
+<connect gate="G$1" pin="CSID1" pad="CSID1"/>
+<connect gate="G$1" pin="CSID2" pad="CSID2"/>
+<connect gate="G$1" pin="CSID3" pad="CSID3"/>
+<connect gate="G$1" pin="CSID4" pad="CSID4"/>
+<connect gate="G$1" pin="CSID5" pad="CSID5"/>
+<connect gate="G$1" pin="CSID6" pad="CSID6"/>
+<connect gate="G$1" pin="CSID7" pad="CSID7"/>
+<connect gate="G$1" pin="CSIHSYNC" pad="CSIHSYNC"/>
+<connect gate="G$1" pin="CSIPCK" pad="CSIPCK"/>
+<connect gate="G$1" pin="CSIVSYNC" pad="CSIVSYNC"/>
+<connect gate="G$1" pin="GND@1" pad="GND@10"/>
+<connect gate="G$1" pin="GND@10" pad="GND@8"/>
+<connect gate="G$1" pin="GND@2" pad="GND@1"/>
+<connect gate="G$1" pin="GND@3" pad="GND@2"/>
+<connect gate="G$1" pin="GND@4" pad="GND@3"/>
+<connect gate="G$1" pin="GND@5" pad="GND@4"/>
+<connect gate="G$1" pin="GND@7" pad="GND@5"/>
+<connect gate="G$1" pin="GND@8" pad="GND@6"/>
+<connect gate="G$1" pin="GND@9" pad="GND@7"/>
+<connect gate="G$1" pin="HPCOM" pad="HPCOM"/>
+<connect gate="G$1" pin="HPL" pad="HPL"/>
+<connect gate="G$1" pin="HPR" pad="HPR"/>
+<connect gate="G$1" pin="LCD-CLK" pad="LCD-CLK"/>
+<connect gate="G$1" pin="LCD-D10" pad="LCD-D10"/>
+<connect gate="G$1" pin="LCD-D11" pad="LCD-D11"/>
+<connect gate="G$1" pin="LCD-D12" pad="LCD-D12"/>
+<connect gate="G$1" pin="LCD-D13" pad="LCD-D13"/>
+<connect gate="G$1" pin="LCD-D14" pad="LCD-D14"/>
+<connect gate="G$1" pin="LCD-D15" pad="LCD-D15"/>
+<connect gate="G$1" pin="LCD-D18" pad="LCD-D18"/>
+<connect gate="G$1" pin="LCD-D19" pad="LCD-D19"/>
+<connect gate="G$1" pin="LCD-D2" pad="LCD-D2"/>
+<connect gate="G$1" pin="LCD-D20" pad="LCD-D20"/>
+<connect gate="G$1" pin="LCD-D21" pad="LCD-D21"/>
+<connect gate="G$1" pin="LCD-D22" pad="LCD-D22"/>
+<connect gate="G$1" pin="LCD-D23" pad="LCD-D23"/>
+<connect gate="G$1" pin="LCD-D3" pad="LCD-D3"/>
+<connect gate="G$1" pin="LCD-D4" pad="LCD-D4"/>
+<connect gate="G$1" pin="LCD-D5" pad="LCD-D5"/>
+<connect gate="G$1" pin="LCD-D6" pad="LCD-D6"/>
+<connect gate="G$1" pin="LCD-D7" pad="LCD-D7"/>
+<connect gate="G$1" pin="LCD-DE" pad="LCD-DE"/>
+<connect gate="G$1" pin="LCDHSYNC" pad="LCD-HSYNC"/>
+<connect gate="G$1" pin="LCDVSYNC" pad="LCD-VSYNC"/>
+<connect gate="G$1" pin="LRADC" pad="LRADC"/>
+<connect gate="G$1" pin="MICIN1" pad="MICIN1"/>
+<connect gate="G$1" pin="MICM" pad="MICM"/>
+<connect gate="G$1" pin="PWM0" pad="PWM0"/>
+<connect gate="G$1" pin="PWRON" pad="PWRON"/>
+<connect gate="G$1" pin="TS" pad="TS"/>
+<connect gate="G$1" pin="TWI1-SCK" pad="TWI1-SCK"/>
+<connect gate="G$1" pin="TWI1-SDA" pad="TWI1-SDA"/>
+<connect gate="G$1" pin="TWI2-SCK" pad="TWI2-SCK"/>
+<connect gate="G$1" pin="TWI2-SDA" pad="TWI2-SDA"/>
+<connect gate="G$1" pin="UART1-RX" pad="UART1-RX"/>
+<connect gate="G$1" pin="UART1-TX" pad="UART1-TX"/>
+<connect gate="G$1" pin="UBOOT" pad="FEL"/>
+<connect gate="G$1" pin="VBAT-EXT" pad="BAT"/>
+<connect gate="G$1" pin="VCC-1V8" pad="VCC1V8"/>
+<connect gate="G$1" pin="VCC-5V@1" pad="VCC5V@0"/>
+<connect gate="G$1" pin="VCC-5V@2" pad="VCC5V@1"/>
+<connect gate="G$1" pin="VCC3V3@1" pad="VCC3V3@1"/>
+<connect gate="G$1" pin="VCC3V3@2" pad="VCC3V3"/>
+<connect gate="G$1" pin="X1" pad="X1"/>
+<connect gate="G$1" pin="X2" pad="X2"/>
+<connect gate="G$1" pin="XIO-P0" pad="XIO-P0"/>
+<connect gate="G$1" pin="XIO-P1" pad="XIO-P1"/>
+<connect gate="G$1" pin="XIO-P2" pad="XIO-P2"/>
+<connect gate="G$1" pin="XIO-P3" pad="XIO-P3"/>
+<connect gate="G$1" pin="XIO-P4" pad="XIO-P4"/>
+<connect gate="G$1" pin="XIO-P5" pad="XIO-P5"/>
+<connect gate="G$1" pin="XIO-P6" pad="XIO-P6"/>
+<connect gate="G$1" pin="XIO-P7" pad="XIO-P7"/>
+<connect gate="G$1" pin="Y1" pad="Y1"/>
+<connect gate="G$1" pin="Y2" pad="Y2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DESC" value="0.9mm drills, moved outer rows 0.1mm towards outside, inner rows 0.1mm inwards" constant="no"/>
+</technology>
 </technologies>
 </device>
 </devices>
@@ -20617,24 +20721,116 @@ Surface Mounting type.</description>
 </device>
 </devices>
 </deviceset>
-<deviceset name="USB-MICROB" prefix="J">
+<deviceset name="DS2431" prefix="U">
+<description>&lt;h2&gt;1024-Bit EEPROM&lt;/h2&gt;
+&lt;p&gt;This chip provides a 4x256 Bit EEPROM, which can be programmed@5V. Write protection and OTP emulation are available, too.&lt;/p&gt;
+&lt;h3&gt;Author:&lt;/h3&gt;
+Jan Kandziora &amp;lt;jjj@gmx.de&amp;gt;</description>
 <gates>
-<gate name="G$1" symbol="USB-MICROB" x="0" y="0"/>
+<gate name="G$1" symbol="DS2431" x="2.54" y="0"/>
 </gates>
 <devices>
-<device name="&quot;" package="USB-B-MICRO-SMD_V03">
+<device name="P" package="TSOC6">
 <connects>
-<connect gate="G$1" pin="D+" pad="D+"/>
-<connect gate="G$1" pin="D-" pad="D-"/>
-<connect gate="G$1" pin="GND" pad="GND"/>
-<connect gate="G$1" pin="SHIELD" pad="SHIELD1 SHIELD2 SHIELD3"/>
-<connect gate="G$1" pin="USBID" pad="ID"/>
-<connect gate="G$1" pin="VBUS" pad="VBUS"/>
+<connect gate="G$1" pin="GND" pad="1"/>
+<connect gate="G$1" pin="IO" pad="2"/>
+<connect gate="G$1" pin="NC@1" pad="3"/>
+<connect gate="G$1" pin="NC@2" pad="4"/>
+<connect gate="G$1" pin="NC@3" pad="5"/>
+<connect gate="G$1" pin="NC@4" pad="6"/>
 </connects>
 <technologies>
 <technology name="">
-<attribute name="PROD_ID" value="CONN-11752" constant="no"/>
+<attribute name="ASSEMBLE" value="" constant="no"/>
+<attribute name="DESCRIPTION" value="IC, 1024-Bit, 1-Wire EEPROM, TSOC6" constant="no"/>
+<attribute name="FOOTPRINT" value="TSOC6" constant="no"/>
+<attribute name="LINK" value="http://www.digikey.com/product-detail/en/DS2431P%2BT%26R/DS2431P%2BT%26RCT-ND/3647900" constant="no"/>
+<attribute name="MFG" value="DIGIKEY" constant="no"/>
+<attribute name="MFG_PN" value="DS2431P+T&amp;RCT-ND" constant="no"/>
+<attribute name="PART_TYPE" value="IC" constant="no"/>
+<attribute name="PRICE" value="0.98" constant="no"/>
+<attribute name="TOLLERANCE" value="" constant="no"/>
+<attribute name="VENDOR" value="MAXIM" constant="no"/>
+<attribute name="VENDOR_PART_NUMBER" value="DS2431P+T&amp;R" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="USB" prefix="JP">
+<gates>
+<gate name="1" symbol="USB" x="-2.54" y="0"/>
+</gates>
+<devices>
+<device name="-A-S" package="USB-A-S">
+<connects>
+<connect gate="1" pin="D+" pad="D+"/>
+<connect gate="1" pin="D-" pad="D-"/>
+<connect gate="1" pin="GND" pad="GND P$5 P$6"/>
+<connect gate="1" pin="VBUS" pad="VBUS"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="PTH" package="USB-B-PTH">
+<connects>
+<connect gate="1" pin="D+" pad="D+"/>
+<connect gate="1" pin="D-" pad="D-"/>
+<connect gate="1" pin="GND" pad="GND S1 S2"/>
+<connect gate="1" pin="VBUS" pad="VBUS"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="CONN-08278" constant="no"/>
+<attribute name="VALUE" value="USB-B" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="PTH-VERTICAL" package="USB-B-PTH-VERTICAL">
+<connects>
+<connect gate="1" pin="D+" pad="D+"/>
+<connect gate="1" pin="D-" pad="D-"/>
+<connect gate="1" pin="GND" pad="GND P$1 P$2"/>
+<connect gate="1" pin="VBUS" pad="VBUS"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="USB-MICROB-SMT-DIP" package="USB-MICROB-SMT-DIP">
+<connects>
+<connect gate="1" pin="D+" pad="D+"/>
+<connect gate="1" pin="D-" pad="D-"/>
+<connect gate="1" pin="GND" pad="GND MT1 MT2 MT3 MT4 P$1 P$2"/>
+<connect gate="1" pin="ID" pad="ID"/>
+<connect gate="1" pin="VBUS" pad="VBUS"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="MICRO_SMD" package="USB-B-MICRO-SMD_V03">
+<connects>
+<connect gate="1" pin="D+" pad="D+"/>
+<connect gate="1" pin="D-" pad="D-"/>
+<connect gate="1" pin="GND" pad="GND SHIELD1 SHIELD2 SHIELD3"/>
+<connect gate="1" pin="ID" pad="ID"/>
+<connect gate="1" pin="VBUS" pad="VBUS"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="HORIZONTAL" package="USB-A-HU">
+<connects>
+<connect gate="1" pin="D+" pad="D+"/>
+<connect gate="1" pin="D-" pad="D-"/>
+<connect gate="1" pin="GND" pad="GND P$5 P$6 P$7 P$8"/>
+<connect gate="1" pin="VBUS" pad="VBUS"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -26589,11 +26785,10 @@ www.irf.com&lt;p&gt;
 <part name="U$36" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="R12" library="rcl" deviceset="R-EU_" device="M0805" value="4.7K"/>
 <part name="SUPPLY13" library="Keyboard v0.3" deviceset="VCC3V3" device=""/>
-<part name="U3" library="Keyboard v0_5" deviceset="DS2431" device="P"/>
 <part name="D1" library="Keyboard v0_5" deviceset="DIODE_SCHTKY_B240" device="" value="B240A"/>
 <part name="R13" library="rcl" deviceset="R-EU_" device="M0805" value="n.a. / 10K"/>
 <part name="U$40" library="Keyboard v0.2" deviceset="GND" device=""/>
-<part name="J1" library="JKW_CHIP" deviceset="2X20-CHIP" device="0.8_DRILL_0.15OFFSET_LR" value="2X20-CHIP0.8_DRILL_0.15OFFSET_LR"/>
+<part name="J1" library="JKW_CHIP" deviceset="2X20-CHIP" device="0.9DRILLS_2" value="2X20-CHIP0.9DRILLS_2"/>
 <part name="GND2" library="supply1" deviceset="GND" device=""/>
 <part name="SDIO" library="JKW_CHIP" deviceset="TF-HOLDER" device=""/>
 <part name="PAM1" library="JKW_CHIP" deviceset="PAM8403" device=""/>
@@ -26653,7 +26848,8 @@ www.irf.com&lt;p&gt;
 <part name="C8" library="rcl" deviceset="C-EU" device="C0805" value="10nF"/>
 <part name="U$35" library="Keyboard v0.2" deviceset="GND" device=""/>
 <part name="R8" library="rcl" deviceset="R-EU_" device="M0805" value="10 / n.a."/>
-<part name="J2" library="JKW_CHIP" deviceset="USB-MICROB" device="&quot;"/>
+<part name="JP1" library="JKW_CHIP" deviceset="USB" device="MICRO_SMD"/>
+<part name="U2" library="JKW_CHIP" deviceset="DS2431" device="P"/>
 </parts>
 <sheets>
 <sheet>
@@ -26716,7 +26912,9 @@ Opt2) n.a.</text>
 _______________
 v7 -&gt; v8
 - added second lowside resistor to achive 5R easier/cheaper (10||10)
-- changed micro USB footprint to smd</text>
+- changed micro USB footprint to smd
+- changed drills from 0.8mm to 0.9mm and 0.1mm offset per bank
+- increased DS2431 footprint</text>
 </plain>
 <instances>
 <instance part="FRAME1" gate="G$1" x="226.06" y="40.64"/>
@@ -26807,7 +27005,6 @@ v7 -&gt; v8
 <instance part="U$36" gate="M" x="243.84" y="53.34"/>
 <instance part="R12" gate="G$1" x="261.62" y="83.82" rot="R90"/>
 <instance part="SUPPLY13" gate="+5V" x="261.62" y="93.98"/>
-<instance part="U3" gate="G$1" x="246.38" y="73.66"/>
 <instance part="D1" gate="G$1" x="535.94" y="261.62"/>
 <instance part="R13" gate="G$1" x="508" y="220.98" rot="R90"/>
 <instance part="U$40" gate="M" x="508" y="210.82"/>
@@ -26861,7 +27058,7 @@ v7 -&gt; v8
 <attribute name="NAME" x="523.24" y="218.44" size="1.778" layer="95"/>
 <attribute name="VALUE" x="520.7" y="213.36" size="1.778" layer="96"/>
 </instance>
-<instance part="U$9" gate="M" x="248.92" y="152.4"/>
+<instance part="U$9" gate="M" x="266.7" y="154.94"/>
 <instance part="SJ4" gate="G$1" x="424.18" y="238.76" smashed="yes" rot="MR0">
 <attribute name="NAME" x="421.64" y="239.141" size="1.778" layer="95" rot="MR0"/>
 </instance>
@@ -26878,10 +27075,8 @@ v7 -&gt; v8
 <instance part="C8" gate="G$1" x="548.64" y="281.94"/>
 <instance part="U$35" gate="M" x="548.64" y="271.78"/>
 <instance part="R8" gate="G$1" x="571.5" y="215.9" rot="R90"/>
-<instance part="J2" gate="G$1" x="241.3" y="165.1" smashed="yes" rot="R180">
-<attribute name="NAME" x="243.84" y="154.94" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="236.22" y="172.72" size="1.778" layer="96" rot="R270"/>
-</instance>
+<instance part="JP1" gate="1" x="251.46" y="162.56" rot="MR0"/>
+<instance part="U2" gate="G$1" x="246.38" y="73.66"/>
 </instances>
 <busses>
 </busses>
@@ -27142,7 +27337,7 @@ v7 -&gt; v8
 <segment>
 <pinref part="U$36" gate="M" pin="GND"/>
 <wire x1="243.84" y1="60.96" x2="243.84" y2="55.88" width="0.1524" layer="91"/>
-<pinref part="U3" gate="G$1" pin="GND"/>
+<pinref part="U2" gate="G$1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U$40" gate="M" pin="GND"/>
@@ -27243,14 +27438,10 @@ v7 -&gt; v8
 <pinref part="Q2" gate="G$1" pin="S"/>
 </segment>
 <segment>
-<wire x1="248.92" y1="157.48" x2="248.92" y2="154.94" width="0.1524" layer="91"/>
 <pinref part="U$9" gate="M" pin="GND"/>
-<pinref part="J2" gate="G$1" pin="GND"/>
-<wire x1="248.92" y1="157.48" x2="246.38" y2="157.48" width="0.1524" layer="91"/>
-<pinref part="J2" gate="G$1" pin="SHIELD"/>
-<wire x1="246.38" y1="170.18" x2="248.92" y2="170.18" width="0.1524" layer="91"/>
-<wire x1="248.92" y1="170.18" x2="248.92" y2="157.48" width="0.1524" layer="91"/>
-<junction x="248.92" y="157.48"/>
+<wire x1="254" y1="162.56" x2="266.7" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="162.56" x2="266.7" y2="157.48" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U$10" gate="G$1" pin="GNDOUT"/>
@@ -27815,13 +28006,13 @@ v7 -&gt; v8
 <pinref part="J1" gate="G$1" pin="LCD-D2"/>
 </segment>
 <segment>
-<wire x1="256.54" y1="76.2" x2="261.62" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="261.62" y1="76.2" x2="261.62" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="R12" gate="G$1" pin="1"/>
 <wire x1="261.62" y1="76.2" x2="271.78" y2="76.2" width="0.1524" layer="91"/>
 <junction x="261.62" y="76.2"/>
-<pinref part="U3" gate="G$1" pin="IO"/>
 <label x="264.16" y="76.2" size="1.778" layer="95" font="vector" ratio="12"/>
+<pinref part="U2" gate="G$1" pin="IO"/>
+<wire x1="256.54" y1="76.2" x2="261.62" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="EN" class="0">
@@ -28088,8 +28279,8 @@ v7 -&gt; v8
 </net>
 <net name="VOUT" class="0">
 <segment>
-<label x="264.16" y="167.64" size="1.778" layer="95" rot="MR0"/>
-<wire x1="266.7" y1="167.64" x2="266.7" y2="185.42" width="0.1524" layer="91"/>
+<label x="266.7" y="175.26" size="1.778" layer="95" rot="MR270"/>
+<wire x1="266.7" y1="165.1" x2="266.7" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="266.7" y1="185.42" x2="414.02" y2="185.42" width="0.1524" layer="91"/>
 <wire x1="414.02" y1="185.42" x2="414.02" y2="170.18" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="ACIN-5V"/>
@@ -28100,10 +28291,8 @@ v7 -&gt; v8
 <wire x1="424.18" y1="243.84" x2="424.18" y2="246.38" width="0.1524" layer="91"/>
 <wire x1="424.18" y1="246.38" x2="414.02" y2="246.38" width="0.1524" layer="91"/>
 <label x="414.02" y="218.44" size="1.778" layer="95" rot="R90"/>
-<wire x1="248.92" y1="167.64" x2="266.7" y2="167.64" width="0.1524" layer="91"/>
-<pinref part="J2" gate="G$1" pin="VBUS"/>
-<wire x1="246.38" y1="167.64" x2="266.7" y2="167.64" width="0.1524" layer="91"/>
-<junction x="266.7" y="167.64"/>
+<wire x1="254" y1="165.1" x2="266.7" y2="165.1" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="1" pin="VBUS"/>
 </segment>
 <segment>
 <pinref part="U$10" gate="G$1" pin="VOUT"/>
