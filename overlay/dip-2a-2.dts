@@ -8,6 +8,9 @@
  * Copyright 2016 NextThing Co
  * https://github.com/NextThingCo/CHIP-dt-overlays/blob/master/nextthingco/dip-pocket-v73.dts
  *
+ * The information about inverse PWM polarity is take from cmnybo, have a look at
+ * https://github.com/cmnybo/chip_lcd_dip/blob/master/source/lcd_panel.dts
+ *
  *
  * This file is dual-licensed: you can use it either under the terms
  * of the GPL or the X11 license, at your option. Note that this dual
@@ -124,10 +127,10 @@
 		__overlay__ {
 			backlight: backlight {
 				compatible = "pwm-backlight";
-				pwms = <&pwm 0 8000 1>;
+				pwms = <&pwm 0 10000 0>;	/* PWM Period 10µs = 100KHz*/
 
-				brightness-levels = <0 1 2 4 8 12 16 24 28 32 100>;
-				default-brightness-level = <8>;
+				brightness-levels = <0 10 20 30 40 50 60 70 80 90 100>;
+				default-brightness-level = <4>;
 
 				pinctrl-names = "default";
 				pinctrl-0 = <&chip_bl_en>;
