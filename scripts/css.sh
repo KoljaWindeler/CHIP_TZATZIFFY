@@ -12,7 +12,8 @@ while true; do
 		else
 			# disp off
 			echo "switching display off"
-			echo 10 > /sys/class/backlight/backlight/brightness
+			echo 1 > /sys/class/backlight/backlight/brightness
+			echo 0 > /sys/class/backlight/backlight/brightness
 		fi
 		LP=$P
 	fi
