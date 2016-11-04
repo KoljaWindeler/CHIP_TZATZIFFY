@@ -1,0 +1,113 @@
+/*
+ * Copyright 2016 
+ * Kolja Windeler <kolja.windeler@gmail.com>
+ *
+ * Thanks to Martin Ayotte
+ * https://bbs.nextthing.co/t/self-help-group-to-understand-device-tree-overlays/5817/39
+ *
+ * This file is dual-licensed: you can use it either under the terms
+ * of the GPL or the X11 license, at your option. Note that this dual
+ * licensing only applies to this file, and not this project as a
+ * whole.
+ *
+ *  a) This file is free software; you can redistribute it and/or
+ *     modify it under the terms of the GNU General Public License as
+ *     published by the Free Software Foundation; either version 2 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This file is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ * Or, alternatively,
+ *
+ *  b) Permission is hereby granted, free of charge, to any person
+ *     obtaining a copy of this software and associated documentation
+ *     files (the "Software"), to deal in the Software without
+ *     restriction, including without limitation the rights to use,
+ *     copy, modify, merge, publish, distribute, sublicense, and/or
+ *     sell copies of the Software, and to permit persons to whom the
+ *     Software is furnished to do so, subject to the following
+ *     conditions:
+ *
+ *     The above copyright notice and this permission notice shall be
+ *     included in all copies or substantial portions of the Software.
+ *
+ *     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ *     OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/pinctrl/sun4i-a10.h>
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+/ {
+	compatible = "nextthing,chip", "allwinner,sun5i-r8";
+
+   fragment@0 {
+      target-path = "/";
+      __overlay__ {
+         mykeypad: mykeypad {
+            compatible = "gpio-keys";
+            #address-cells = <1>;
+            #size-cells = <0>;
+            status = "okay";
+            button@10 {
+               label = "GPIO KEY_LEFT";
+               linux,code = <0x69>; // hex
+               gpios = <&xio 0 1 1>; // pin 0, active_low
+            };
+            button@11 {
+               label = "GPIO right";
+               linux,code = <0x6a>;
+               gpios = <&xio 1 1 1>; // pin 1, active_low
+            };
+            button@12 {
+               label = "GPIO up";
+               linux,code = <0x67>;
+               gpios = <&xio 2 1 1>; // pin 2, active_low
+            };
+            button@13 {
+               label = "GPIO down";
+               linux,code = <0x6c>;
+               gpios = <&xio 3 1 1>; // pin 3, active_low
+            };
+            button@14 {
+               label = "GPIO x";
+               linux,code = <0x2d>;
+               gpios = <&xio 4 1 1>; // pin 4, active_low
+            };
+            button@15 {
+               label = "GPIO y";
+               linux,code = <0x15>;
+               gpios = <&xio 5 1 1>; // pin 5, active_low
+            };
+            button@16 {
+               label = "GPIO enter";
+               linux,code = <0x1c>;
+               gpios = <&xio 6 1 1>; // pin 6, active_low
+            };
+            button@17 {
+               label = "GPIO esc";
+               linux,code = <0x01>;
+               gpios = <&xio 7 1 1>; // pin 7, active_low
+            };
+         };
+      };
+   };
+
+   __overrides__ {
+      mykeypad =     <&mykeypad>,"status";
+   };	
+};
