@@ -12,3 +12,4 @@ echo "@reboot "$DIR"/load.sh" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
+echo "installation done, please reboot now"
