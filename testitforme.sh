@@ -1,3 +1,7 @@
+echo "version"
+uname -r
+echo ""
+
 echo "listing all install overlays"
 find /lib/firmware/nextthingco/chip/
 echo ""
