@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 LP=""
 B=`cat /sys/class/backlight/backlight/actual_brightness`
 
