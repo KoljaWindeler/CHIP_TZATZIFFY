@@ -1,3 +1,5 @@
+#! /bin/sh
+
 LABEL_FILE=`grep -l pcf8574a /sys/class/gpio/*/*label`
 BASE_FILE=`dirname $LABEL_FILE`/base
 BASE=`cat $BASE_FILE`

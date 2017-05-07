@@ -1,3 +1,5 @@
+#! /bin/sh
+
 echo "version"
 uname -r
 echo ""
